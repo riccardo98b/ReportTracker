@@ -1,4 +1,4 @@
-package com.services;
+package com.services.segnalazione;
 
 import org.springframework.stereotype.Service;
 
