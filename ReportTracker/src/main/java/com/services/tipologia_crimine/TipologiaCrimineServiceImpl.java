@@ -59,12 +59,14 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
 	}
 	
 	
-/*	
+	/*
 	public void saveCSV() throws IOException{
 		
 		//Riccardo String file = "/Users/riccardobelloni/Desktop/PROGETTO FINALE/caricamentoDB/tipologie.csv";
         //Nicolo  String file = "C://Users/Nicolò/Desktop/cartella/java/progetto_finale/Dati Tipologie DB - Foglio1.csv";
         // Samuele String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Tipologie DB - Foglio1.csv";
+        //Christian String file = "/Users/christiancanicoba/Desktop/Dati Progetto/tipologie.csv";
+        
         List<String> listFile = new ArrayList<>();
         
         try {

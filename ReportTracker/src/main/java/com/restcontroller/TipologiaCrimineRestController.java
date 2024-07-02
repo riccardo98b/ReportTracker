@@ -17,6 +17,7 @@ public class TipologiaCrimineRestController {
 	
 	@Autowired           
 	private TipologiaCrimineService service;
+	
 	@GetMapping("/all")
 	public ResponseEntity<?> findAll(){  
 		List<TipologiaCrimine> tipologiacrimini=service.findAll();
@@ -27,11 +28,13 @@ public class TipologiaCrimineRestController {
 		}
 	}
 	
-	
-	/*@PostMapping("/caricatutto")
+	//http://localhost:8080/tipologie_crimini
+	/*
+	@PostMapping("/caricatutto")
 	public void saveCSV()throws Exception{
 		service.saveCSV();
-	}*/
+	}
+	*/
 	
 
 }

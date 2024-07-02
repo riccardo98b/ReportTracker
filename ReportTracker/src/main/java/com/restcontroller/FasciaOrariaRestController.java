@@ -22,7 +22,7 @@ public class FasciaOrariaRestController {
 		private FasciaOrariaService service;
 		
 		// API per ottenere tutti i publisher
-		// http://localhost:8080/api/v1/fasciaOraria    
+		// http://localhost:8080/fasciaoraria   
 		
 		@GetMapping("/all")
 	
