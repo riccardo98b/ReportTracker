@@ -29,7 +29,7 @@ public class FasciaOrariaRestController {
 		
 		public ResponseEntity<?> findAll() throws Exception{
 			List<FasciaOraria> fascOraria = service.findAll();
-			if(fascOraria.isEmpty()) {
+			if(!fascOraria.isEmpty()) {
 				return new ResponseEntity<>(fascOraria,HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>("Fascia oraria non trovata",HttpStatus.OK);
