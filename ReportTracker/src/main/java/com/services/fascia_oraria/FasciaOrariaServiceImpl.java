@@ -60,6 +60,7 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	@Override
 	public void saveCsv() throws Exception {
 		// commento il percorso 
+		// Samuele String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Comune DB.csv";
 		// Riccardo String file = "/Users/riccardobelloni/Desktop/PROGETTO FINALE/caricamentoDB/fascia.csv";
 
 	        List<String> listFile = new ArrayList<>();
