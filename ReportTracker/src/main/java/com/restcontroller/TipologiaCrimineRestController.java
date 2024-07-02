@@ -27,11 +27,11 @@ public class TipologiaCrimineRestController {
 		}
 	}
 	
-	/*
-	@PostMapping("/caricatutto")
+	
+	/*@PostMapping("/caricatutto")
 	public void saveCSV()throws Exception{
 		service.saveCSV();
-	}
-	*/
+	}*/
+	
 
 }
