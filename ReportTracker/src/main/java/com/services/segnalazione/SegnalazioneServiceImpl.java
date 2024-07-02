@@ -42,9 +42,8 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 		Set<TipologiaCrimine> tC = segnalazione.getTipologiaCrimine();
 		Comune comune = segnalazione.getComune();
 		FasciaOraria fO = segnalazione.getFasciaOraria();
-		Utente utente = segnalazione.getUtente();
 		
-		if(!tC.isEmpty() && comune != null && fO != null && utente != null){
+		if(!tC.isEmpty() && comune != null && fO != null){
 			return repository.save(segnalazione);
 		}
 		throw new Exception("Uno dei valori è nullo");
