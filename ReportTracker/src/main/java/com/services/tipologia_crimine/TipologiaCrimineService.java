@@ -1,5 +1,6 @@
 package com.services.tipologia_crimine;
 
+import java.io.IOException;
 import java.util.List;
 import com.model.TipologiaCrimine;
 
@@ -19,5 +20,7 @@ public interface TipologiaCrimineService {
 	// Aggiorna il tipo di crimine di id specificato
 	TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologia) throws Exception;
 	
-
+	/*
+	void saveCSV() throws IOException;
+	*/
 }

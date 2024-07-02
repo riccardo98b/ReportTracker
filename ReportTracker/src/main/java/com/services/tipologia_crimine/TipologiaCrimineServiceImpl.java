@@ -1,15 +1,18 @@
 package com.services.tipologia_crimine;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.model.TipologiaCrimine;
+import com.my_methods.MyMethods;
 import com.repositories.TipologiaCrimineRepository;
 
 
 @Service
-public class TipologiaCrimineServiceImpl implements TipologiaCrimineService{
+public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaCrimineService{
 	
 	@Autowired
 	private TipologiaCrimineRepository repository;
@@ -55,6 +58,27 @@ public class TipologiaCrimineServiceImpl implements TipologiaCrimineService{
 		}
 	}
 	
+	
+	/*
+	public void saveCSV() throws IOException{
+		
+        String file = "C://Users/Nicolò/Desktop/cartella/java/progetto_finale/DatiTipologieDB.csv";
+        List<String> listFile = new ArrayList<>();
+        
+        try {
+            listFile = lettura(file);
+
+            for(String s: listFile) {
+                TipologiaCrimine tipologiacrimine = new TipologiaCrimine();
+                tipologiacrimine.setNome(s);
+                repository.save(tipologiacrimine);
+            }
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+	*/
 }
 
 
