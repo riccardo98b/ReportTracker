@@ -62,7 +62,7 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 		// Samuele String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Comune DB.csv";
 		//Nicolo   String file = "C://Users/Nicolò/Desktop/cartella/java/progetto_finale/DatiComuneDB.csv"; 
 		 //Christian String file = "/Users/christiancanicoba/Desktop/Dati Progetto/comune.csv";
-		
+		// Pasquale String file ="C://Users/Pasquale/Desktop/File DB/comune.csv";
 		List<String> listFile = new ArrayList<>();
 		try {
 			

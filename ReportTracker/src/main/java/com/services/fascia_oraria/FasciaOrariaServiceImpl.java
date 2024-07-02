@@ -64,6 +64,7 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 		// Riccardo String file = "/Users/riccardobelloni/Desktop/PROGETTO FINALE/caricamentoDB/fascia.csv";
 		// Nicolò   String file = "C://Users/Nicolò/Desktop/cartella/java/progetto_finale/DatiFasciaOrariaDB.csv";
 		//Christian String file = "/Users/christiancanicoba/Desktop/Dati Progetto/fascia.csv";
+		// Pasquale String file = "C://Users/Pasquale/Desktop/File DB/fascia.csv";
 
 	        List<String> listFile = new ArrayList<>();
 	        try {
@@ -86,8 +87,8 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	            e.printStackTrace();
 	        }
 
-	}
-	*/
+	}*/
+	
 	 
 
 }

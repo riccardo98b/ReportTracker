@@ -66,7 +66,7 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
         //Nicolo  String file = "C://Users/Nicolò/Desktop/cartella/java/progetto_finale/Dati Tipologie DB - Foglio1.csv";
         // Samuele String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Tipologie DB - Foglio1.csv";
         //Christian String file = "/Users/christiancanicoba/Desktop/Dati Progetto/tipologie.csv";
-        
+        // Pasquale String file = "C://Users/Pasquale/Desktop/File DB/tipologie.csv";
         List<String> listFile = new ArrayList<>();
         
         try {
