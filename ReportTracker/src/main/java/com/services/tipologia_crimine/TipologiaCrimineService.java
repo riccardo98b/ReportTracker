@@ -20,7 +20,7 @@ public interface TipologiaCrimineService {
 	// Aggiorna il tipo di crimine di id specificato
 	TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologia) throws Exception;
 	
-	/*
-	void saveCSV() throws IOException;
-	*/
+	
+	//void saveCSV() throws IOException;
+	
 }
