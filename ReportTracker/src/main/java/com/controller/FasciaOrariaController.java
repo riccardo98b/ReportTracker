@@ -46,7 +46,7 @@ public class FasciaOrariaController {
 		}
 		
 		// Visualizza una FasciaOraria tramite id
-	    @GetMapping("/{id}")
+	    @GetMapping("find/{id}")
 	    public ResponseEntity<?> findById(@PathVariable Long id) {
 	        try {
 	            FasciaOraria fasciaOraria = service.getFasciaOrariaById(id);
