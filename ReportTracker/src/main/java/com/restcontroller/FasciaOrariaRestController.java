@@ -1,4 +1,4 @@
-package restcontroller;
+package com.restcontroller;
 
 import java.util.List;
 

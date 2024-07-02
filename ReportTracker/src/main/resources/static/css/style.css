@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo_img{
+    width: 150px;
+
+}
+
+.ms_nav_bar{
+    background-color: #02A9F7 !important;
+    padding-left: 10px;
+}
+
+.ms_color_white{
+    color: white !important;
+}
+
+.ms_img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ms_position-a{
+    position: absolute;
+}
+
+.ms_position-a:hover{
+    display: none;
+}
+
+.ms_z-index:hover{
+    z-index: 3;
+}
+
+.ms_link:hover{
+    color: #000304 !important;
+}
