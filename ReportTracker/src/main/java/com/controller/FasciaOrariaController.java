@@ -29,7 +29,7 @@ public class FasciaOrariaController {
 	@Autowired
 		private FasciaOrariaService service;
 		
-		// API per ottenere tutti i publisher
+		// API per ottenere tutte le fasceorarie
 		// http://localhost:8080/api/v1/fasciaOraria    
 		
 		@GetMapping("/all")
@@ -37,7 +37,7 @@ public class FasciaOrariaController {
 		
 		public ResponseEntity<?> findAll() throws Exception{
 			List<FasciaOraria> fascOraria = service.findAll();
-			if(fascOraria.isEmpty()) {
+			if(!fascOraria.isEmpty()) {
 				return new ResponseEntity<>(fascOraria,HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>("Fascia oraria non trovata",HttpStatus.OK);
@@ -46,7 +46,7 @@ public class FasciaOrariaController {
 		}
 		
 		// Visualizza una FasciaOraria tramite id
-	    @GetMapping("find/{id}")
+	    @GetMapping("/find/{id}")
 	    public ResponseEntity<?> findById(@PathVariable Long id) {
 	        try {
 	            FasciaOraria fasciaOraria = service.getFasciaOrariaById(id);
