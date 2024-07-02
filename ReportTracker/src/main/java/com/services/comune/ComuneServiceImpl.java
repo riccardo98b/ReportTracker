@@ -1,5 +1,7 @@
 package com.services.comune;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.model.Comune;
+import com.my_methods.MyMethods;
 import com.repositories.ComuneRepository;
 
 @Service
-public class ComuneServiceImpl implements ComuneService{
+public class ComuneServiceImpl extends MyMethods implements ComuneService{
 
 	@Autowired
 	private ComuneRepository repository;
@@ -52,5 +55,31 @@ public class ComuneServiceImpl implements ComuneService{
 		}
 	}
 	
+	
+
+	/*public void saveCSV() throws IOException{
+		// Samuele String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Comune DB.csv";
+		
+		List<String> listFile = new ArrayList<>();
+		try {
+			
+			listFile = lettura(file);
+			
+			
+			for(String s: listFile) {
+				String [] sup = s.split(",");
+				
+				Comune comuni = new Comune();
+				
+				comuni.setNome(sup[0]);
+				
+				repository.save(comuni);	
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}*/
 	
 }
