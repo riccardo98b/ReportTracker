@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +36,14 @@ public class FasciaOrariaRestController {
 				// QUI METTIAMO OK PERCHE NON CE UN ELENCO,QUINDI NON CONSIDERATO ERRORE
 			}
 		}
+		
+		
+	/*	@PostMapping("/salva/fasciaoraria")
+		public String saveCsv()throws Exception{
+			service.saveCsv();
+			return "File caricato con successo";
+		}*/
+		
 		
 		
 		

@@ -1,16 +1,18 @@
 package com.services.fascia_oraria;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.model.FasciaOraria;
+import com.my_methods.MyMethods;
 import com.repositories.FasciaOrariaRepository;
 
 
 @Service
-public class FasciaOrariaServiceImpl implements FasciaOrariaService{
+public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaService{
 	
 	@Autowired
 	private FasciaOrariaRepository FascOrariaRepository;
@@ -49,6 +51,39 @@ public class FasciaOrariaServiceImpl implements FasciaOrariaService{
 	public List<FasciaOraria> findAll() throws Exception {
 		return (List<FasciaOraria>) FascOrariaRepository.findAll();
 	}
+	
+	
+	
+	
+	
+/*
+	@Override
+	public void saveCsv() throws Exception {
+		// commento il percorso 
+		// Riccardo String file = "/Users/riccardobelloni/Desktop/PROGETTO FINALE/caricamentoDB/fascia.csv";
+
+	        List<String> listFile = new ArrayList<>();
+	        try {
+
+	            listFile = lettura(file);
+
+
+	            for(String s: listFile) {
+	                String [] sup = s.split(",");
+
+	                FasciaOraria fasceOrarie = new FasciaOraria();
+	             
+	                fasceOrarie.setNome(sup[0]);
+	  
+
+	                FascOrariaRepository.save(fasceOrarie);
+	            }
+
+	        }catch(Exception e) {
+	            e.printStackTrace();
+	        }
+
+	}*/
 	
 	 
 
