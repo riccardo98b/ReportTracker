@@ -11,8 +11,8 @@ import com.model.Comune;
 import com.model.FasciaOraria;
 import com.model.Segnalazione;
 import com.model.TipologiaCrimine;
-import com.model.Utente;
 import com.repositories.SegnalazioneRepository;
+
 
 @Service
 public class SegnalazioneServiceImpl implements SegnalazioneService{
@@ -67,5 +67,18 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 			throw new Exception("id not found"); 
 		}
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
