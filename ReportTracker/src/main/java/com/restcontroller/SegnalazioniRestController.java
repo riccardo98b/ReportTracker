@@ -1,4 +1,4 @@
-package com.controller;
+package com.restcontroller;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import com.services.segnalazione.SegnalazioneServiceImpl;
 
 @Controller 
 @RequestMapping("/segnalazioni")
-public class SegnalazioniController {
+public class SegnalazioniRestController {
 
 	@Autowired
 	private SegnalazioneServiceImpl service;
