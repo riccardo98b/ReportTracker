@@ -60,7 +60,7 @@ public class FasciaOrariaRestController {
 	        }
 	    }
 		
-		@PostMapping("/creafascia")
+		@PostMapping("/crea")
 	    public ResponseEntity<FasciaOraria> createFasciaOraria(@RequestBody FasciaOraria fasciaOraria) {
 	        FasciaOraria nuovaFasciaOraria = service.addFasciaOraria(fasciaOraria);
 	        return ResponseEntity.ok(nuovaFasciaOraria);
