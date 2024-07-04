@@ -1,46 +1,147 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.logo_img{
+/* INIZIO NAVBAR */
+.logo_img {
     width: 150px;
-
 }
 
-.ms_nav_bar{
+.ms_nav_bar {
     background-color: #02A9F7 !important;
     padding-left: 10px;
 }
 
-.ms_color_white{
+.ms_color_white {
     color: white !important;
 }
 
-.ms_img{
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.ms_position-a{
+.ms_position-a {
     position: absolute;
 }
 
-.ms_position-a:hover{
+.ms_position-a:hover {
     display: none;
 }
 
-.ms_z-index:hover{
+.ms_z-index:hover {
     z-index: 3;
 }
 
-.ms_link:hover{
+.ms_link:hover {
     color: #000304 !important;
 }
 
-.ms_wall{
+.ms_wall {
     border-right: 3px solid white;
+}
+/* FINE NAVBAR */
+
+main {
+    margin-bottom: 100px; /* Aggiunge margine inferiore per evitare sovrapposizione con il footer */
+}
+
+/* Stile personalizzato per dimensioni fisse del carosello */
+.carousel {
+    position: relative; /* Necessario per posizionare correttamente l'overlay */
+    width: 1200px; /* Imposta una larghezza fissa per il carosello */
+    height: 600px; /* Imposta un'altezza fissa per il carosello */
+    margin: auto; /* Centra il carosello orizzontalmente */
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta le immagini mantenendo le proporzioni */
+    object-position: center; /* Centra l'immagine */
+    border-radius: 15px; /* Applica bordi stondate alle immagini */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Riduce la larghezza dei pulsanti di navigazione */
+    height: 100%; /* Imposta l'altezza al 100% del carosello */
+    top: 0; /* Allinea i pulsanti in alto */
+    bottom: 0; /* Allinea i pulsanti in basso */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2); /* Sfondo semi-trasparente per i pulsanti */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 50px;
+    height: 50px;
+    background-size: 100%, 100%; /* Ridimensiona le icone */
+}
+
+/* Mantiene l'overlay centrato */
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Velo scuro con trasparenza */
+}
+
+.carousel-text {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.spacer {
+    height: 50px; /* Imposta l'altezza dello spazio tra il testo e il pulsante */
+}
+
+.carousel-overlay .btn {
+    margin-top: 25px; /* Aggiunge un margine superiore al pulsante per abbassarlo */
+    font-size: 1.5rem; /* Aumenta la dimensione del testo del pulsante */
+    padding: 10px 40px; /* Aumenta la dimensione del pulsante */
+}
+
+/* Stile per l'immagine centrata e con bordi arrotondati */
+.align-self-center {
+    border-radius: 15px; /* Arrotonda i bordi dell'immagine */
+    display: flex;
+    align-items: center; /* Centra l'immagine verticalmente */
+    justify-content: center; /* Centra l'immagine orizzontalmente */
+}
+
+/* Assicura che il footer sia sempre visibile */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #02A9F7;
+    color: white;
+    padding: 5px 0; /* Mantieni un po' di padding per separare il testo dal bordo */
+    height: 60px; /* Imposta un'altezza fissa più piccola */
+    line-height: 50px; /* Imposta l'altezza della riga uguale all'altezza del footer */
+    text-align: center; /* Centra il testo nel footer */
+    z-index: 1000; /* Assicura che il footer sia sopra gli altri elementi */
+}
+
+.footer .containerf {
+    display: flex;
+    justify-content: center;
 }
