@@ -64,7 +64,7 @@ public class TipologiaCrimineRestController {
 	
 	
 	
-	@PutMapping("/aggiorna/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateById(@PathVariable Integer id, @RequestBody TipologiaCrimine tipologiacrimine){
 		try {
 			return new ResponseEntity<>(service.updateById(id,tipologiacrimine), HttpStatus.OK);
