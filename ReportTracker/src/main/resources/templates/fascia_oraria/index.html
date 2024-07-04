@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista delle fasce orarie</title>
+    <link rel="stylesheet" href="../css/tabella css/tabella.css">
+</head>
+<body>
+    <h1>Lista delle fasce orarie</h1>
+    <ul id="fasciaOrariaList"></ul>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/fasciaorariaAD') // Assumendo che '/fasciaorariaAD' sia l'endpoint corretto per ottenere le fasce orarie
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                	console.log(data);
+                    const fasciaOrariaList = document.getElementById('fasciaOrariaList');
+                    if (data.length === 0) {
+                        fasciaOrariaList.innerHTML = '<li>Nessuna fascia oraria trovata</li>';
+                    } else {
+                        data.forEach(fasciaOraria => {
+                            const li = document.createElement('li');
+                            li.textContent = fasciaOraria.nome; // Assumendo che 'nome' sia il campo corretto per il nome della fascia oraria
+                            fasciaOrariaList.appendChild(li);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching fascia oraria:', error));
+        });
+    </script>
+</body>
+</html>

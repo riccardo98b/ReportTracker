@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aggiorna Fascia Oraria</title>
+    <link rel="stylesheet" href="../css/tabella.css">
+    <style>
+        /* Stili CSS aggiuntivi per migliorare la visualizzazione */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: green;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aggiorna Fascia Oraria</h1>
+    <form id="fasciaOrariaForm">
+        <input type="text" id="fasciaOrariaId" name="fasciaOrariaId">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <button type="submit">Aggiorna Fascia Oraria</button>
+    </form>
+    <ul id="fasciaOrariaList"></ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id'); // Recupera l'ID dalla query string
+            console.log(id);
+            if (id) {
+                fetch('/fasciaorariaAD/find/' + id)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(fasciaOraria => {
+                        document.getElementById('fasciaOrariaId').value = fasciaOraria.id;
+                        document.getElementById('nome').value = fasciaOraria.nome;
+                    })
+                    .catch(error => console.error('Error fetching fascia oraria:', error));
+            } else {
+                alert('ID della fascia oraria non fornito.');
+            }
+
+            document.getElementById('fasciaOrariaForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const id = document.getElementById('fasciaOrariaId').value;
+                const nome = document.getElementById('nome').value;
+
+                fetch('/fasciaorariaAD/update/' + id, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nome: nome })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(fasciaOraria => {
+                    const fasciaOrariaList = document.getElementById('fasciaOrariaList');
+                    const li = document.createElement('li');
+                    li.textContent = 'Fascia Oraria aggiornata: ' + fasciaOraria.nome;
+                    fasciaOrariaList.appendChild(li);
+                    
+                    // Pulisco il form
+                    document.getElementById('fasciaOrariaForm').reset();
+                })
+                .catch(error => console.error('Error updating fascia oraria:', error));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 package com.services.fascia_oraria;
 
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,17 +16,17 @@ import com.repositories.FasciaOrariaRepository;
 public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaService{
 	
 	@Autowired
-	private FasciaOrariaRepository FascOrariaRepository;
+	private FasciaOrariaRepository fascOrariaRepository;
 
 	@Override
 	public FasciaOraria getFasciaOrariaById(Long id) {
-        return  FascOrariaRepository.findById(id).orElse(null);
+        return  fascOrariaRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void removeFasciaOraria(Long id) throws Exception {
-		if(FascOrariaRepository.existsById(id)) {
-			FascOrariaRepository.deleteById(id);
+		if(fascOrariaRepository.existsById(id)) {
+			fascOrariaRepository.deleteById(id);
 		}else {
 			throw new Exception("ID non trovato"); 
 		}
@@ -34,15 +34,22 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	}
 
 	@Override
-	public void updateFasciaOraria(FasciaOraria fasciaOraria) {
-		 if (fasciaOraria.getId() != null && FascOrariaRepository.existsById(fasciaOraria.getId())) {
-			 FascOrariaRepository.save(fasciaOraria);
-	        }		
+	public FasciaOraria updateFasciaOraria(Long id,FasciaOraria fasciaOraria) throws Exception{
+		Optional<FasciaOraria> optf = fascOrariaRepository.findById(id);
+			if(optf.isPresent()) {
+				FasciaOraria f = optf.get();
+				f.setNome(fasciaOraria.getNome());
+				return fascOrariaRepository.save(f);
+				
+			}
+			else {
+				throw new Exception("Fascia oraria con id "+id+" non trovato.");
+			}
 	}
 
 	@Override
 	public FasciaOraria addFasciaOraria(FasciaOraria fasciaOraria) {
-        return FascOrariaRepository.save(fasciaOraria);
+        return fascOrariaRepository.save(fasciaOraria);
 
 		
 	}
@@ -50,7 +57,7 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	  
 	@Override
 	public List<FasciaOraria> findAll() throws Exception {
-		return (List<FasciaOraria>) FascOrariaRepository.findAll();
+		return (List<FasciaOraria>) fascOrariaRepository.findAll();
 	}
 	
 	

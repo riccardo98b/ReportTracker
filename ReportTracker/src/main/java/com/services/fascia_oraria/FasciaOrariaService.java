@@ -14,7 +14,7 @@ public interface FasciaOrariaService {
     void removeFasciaOraria(Long id) throws Exception;
 
     
-    void updateFasciaOraria(FasciaOraria fasciaOraria);
+    FasciaOraria updateFasciaOraria(Long id,FasciaOraria fasciaOraria) throws Exception;
     
     FasciaOraria addFasciaOraria(FasciaOraria fasciaOraria);
 

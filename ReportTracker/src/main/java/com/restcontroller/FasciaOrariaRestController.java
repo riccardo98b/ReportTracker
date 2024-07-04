@@ -82,14 +82,14 @@ public class FasciaOrariaRestController {
 	        }
 	    }
 	    
-	 // Aggiorna una FasciaOraria esistente
-	    @PutMapping("/aggiorna/{id}")
+	    // Aggiorna una FasciaOraria esistente
+	    @PutMapping("/update/{id}")
 	    public ResponseEntity<?> updateFasciaOraria(@PathVariable Long id, @RequestBody FasciaOraria updatedFasciaOraria) {
 	        try {
 	            FasciaOraria existingFasciaOraria = service.getFasciaOrariaById(id);
 	            if (existingFasciaOraria != null) {
 	                updatedFasciaOraria.setId(id); 
-	                service.updateFasciaOraria(updatedFasciaOraria);
+	                service.updateFasciaOraria(id,updatedFasciaOraria);
 	                return new ResponseEntity<>(updatedFasciaOraria, HttpStatus.OK);
 	            } else {
 	                return new ResponseEntity<>("Fascia oraria non trovata", HttpStatus.NOT_FOUND);
@@ -97,7 +97,6 @@ public class FasciaOrariaRestController {
 	        } catch (Exception e) {
 	            return new ResponseEntity<>("Errore durante l'aggiornamento della fascia oraria", HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
-	    
 	        
 	    
 	    
