@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             comuniList.innerHTML = '<li>Nessun comune trovato</li>';
         } else {
             data.forEach(comune => {
-                comuniList.innerHTML += "<tr> <td>" + comune.id + "</td> <td>" + comune.nome + "</td> <td><a href='http://localhost:8080/comuni/update/" + comune.id + "'>Modifica</a></td> <td><a href='#' class='delete-link' onclick='deleteComune("+comune.id+")'>Elimina</a></td> </tr>";
+                comuniList.innerHTML += "<tr> <td>" + comune.id + "</td> <td>" + comune.nome + "</td> <td><a class='ms_modifica' href='http://localhost:8080/comuni/update/" + comune.id + "'>Modifica</a></td> <td><a class='ms_elimina' href='' class='delete-link' onclick='deleteComune("+comune.id+")'>Elimina</a></td> </tr>";
             });
         }
     })

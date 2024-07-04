@@ -1,19 +1,24 @@
-body {
-    font-family: Arial, sans-serif;
+a{
+    display: inline-block;
+    padding: 5px 10px;
+    color: white !important;
+    text-decoration: none !important;
 }
 
-h1 {
-    color: #333;
+.ms_salva{
+    background-color: green;
+    border-radius: 20px;
+    border: 1px solid green;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.ms_modifica{
+    background-color: orange;
+    border-radius: 20px;
+    border: 1px solid orange;
 }
 
-li {
-    background: #f4f4f4;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
+.ms_elimina{
+    background-color: red;
+    border-radius: 20px;
+    border: 1px solid red;
 }
