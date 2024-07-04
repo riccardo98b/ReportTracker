@@ -41,7 +41,7 @@ public class ComuneRestController {
 	@GetMapping("/find/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id){
 		try {
-			return new ResponseEntity<>(service.findbyId(id), HttpStatus.OK);
+			return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}

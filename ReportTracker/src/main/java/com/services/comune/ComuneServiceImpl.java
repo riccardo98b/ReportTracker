@@ -24,7 +24,7 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 	}
 
 	@Override
-	public Comune findbyId(Long id) throws Exception {
+	public Comune findById(Long id) throws Exception {
 		Optional<Comune> optComune = repository.findById(id);
 		if(optComune.isPresent()) {
 			return optComune.get();
@@ -48,12 +48,17 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 
 	@Override
 	public Comune updateById(Long id, Comune comune) throws Exception {
-		if(repository.existsById(id)) {
-			return repository.save(comune);
-		} else {
-			throw new Exception("Comune con id:"+id+" non esiste");
-		}
-	}
+	    Optional<Comune> optionalComune = repository.findById(id);
+	    if(optionalComune.isPresent()) {
+	        Comune existingComune = optionalComune.get();
+	        // Aggiorna i campi dell'oggetto esistente con i valori del nuovo oggetto
+	        existingComune.setNome(comune.getNome());
+	        // Aggiungi altri campi da aggiornare se necessario
+	        return repository.save(existingComune);
+	    } else {
+	        throw new Exception("Comune con id: " + id + " non esiste");
+	    }
+	}   
 	
 	
 /*

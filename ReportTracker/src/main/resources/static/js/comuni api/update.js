@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <h2>Modifica un Comune</h2>
-    <form id="updateComuneForm">
-        <label for="updateNome">Nome del Comune:</label>
-        <input type="text" id="updateNome" name="updateNome" required>
-        <button type="submit">Aggiorna</button>
-    </form>
-
-    <div id="result"></div>
-
-    <script>
-       document.addEventListener("DOMContentLoaded", function() {
-    // Ottieni il percorso dell'URL
-    const pathArray = window.location.pathname.split('/');
-    // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
-    const id = pathArray[pathArray.length - 1];
-
-    if (!id || isNaN(id)) {
-        const result = document.getElementById('result');
-        result.innerHTML = "<span class='ms_color_r'>ID del comune non trovato nell'URL</span>";
-        return;
-    }
-
+console.log("pro");
+document.addEventListener("DOMContentLoaded", function() {
     // Gestione del submit del form di aggiornamento
     document.getElementById('updateComuneForm').addEventListener('submit', function(event) {
         event.preventDefault();
+        const id = document.getElementById('updateId').value;
         const nome = document.getElementById('updateNome').value;
 
         fetch(`/comuneAD/update/${id}`, {
@@ -55,6 +25,7 @@
             result.innerHTML = "<span class='ms_color_g'>Il comune è stato aggiornato con successo</span>";
 
             // Pulisci il form
+            document.getElementById('updateId').value = "";
             document.getElementById('updateNome').value = "";
         })
         .catch(error => {
@@ -64,6 +35,3 @@
         });
     });
 });
-    </script>
-</body>
-</html>

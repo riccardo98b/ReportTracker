@@ -7,7 +7,7 @@ public interface ComuneService{
 
 	List<Comune> findAll();
 
-	Comune findbyId(Long id) throws Exception;
+	Comune findById(Long id) throws Exception;
 
 	Comune save(Comune comune);
 
