@@ -1,9 +1,19 @@
 console.log("pro");
 document.addEventListener("DOMContentLoaded", function() {
+    // Ottieni il percorso dell'URL
+    const pathArray = window.location.pathname.split('/');
+    // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
+    const id = pathArray[pathArray.length - 1];
+
+    if (!id || isNaN(id)) {
+        const result = document.getElementById('result');
+        result.innerHTML = "<span class='ms_color_r'>ID del comune non trovato nell'URL</span>";
+        return;
+    }
+
     // Gestione del submit del form di aggiornamento
     document.getElementById('updateComuneForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const id = document.getElementById('updateId').value;
         const nome = document.getElementById('updateNome').value;
 
         fetch(`/comuneAD/update/${id}`, {
@@ -25,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
             result.innerHTML = "<span class='ms_color_g'>Il comune è stato aggiornato con successo</span>";
 
             // Pulisci il form
-            document.getElementById('updateId').value = "";
             document.getElementById('updateNome').value = "";
         })
         .catch(error => {
