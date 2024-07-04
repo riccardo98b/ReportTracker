@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aggiorna Tipologia di Crimine</title>
+    <link rel="stylesheet" href="../css/tabella.css">
+    <style>
+        /* Stili CSS aggiuntivi per migliorare la visualizzazione */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: green;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aggiorna Tipologia di Crimine</h1>
+    <form id="tipologiaList">
+        <input type="text" id="tipologiaId" name="tipologiaId">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <button type="submit">Aggiorna Tipologia Crimine</button>
+    </form>
+    <ul id="tipologiaList"></ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id'); // Recupera l'ID dalla query string
+            console.log(id);
+            if (!id || isNaN(id)) {
+                fetch('/tipologie_criminiAD/find/' + id)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(tipologiacrimine => {
+                        document.getElementById('tipologiaId').value = tipologiacrimine.id;
+                        document.getElementById('nome').value = tipologiacrimine.nome;
+                    })
+                    .catch(error => console.error('Error fetching tipologia di crimine:', error));
+            } else {
+                alert('ID della fascia oraria non fornito.');
+            }
+
+            document.getElementById('tipologiaList').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const id = document.getElementById('tipologiaId').value;
+                const nome = document.getElementById('nome').value;
+
+                fetch('/tipologia_crimineAD/aggiorna/' + id, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nome: nome })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(tipologiacrimine => {
+                    const tipologiaList = document.getElementById('tipologiaList');
+                    const li = document.createElement('li');
+                    li.textContent = 'Tipologia di Crimine aggiornata: ' + tipologiacrimine.nome;
+                    tipologiaList.appendChild(li);
+                    
+                    // Pulisco il form
+                    document.getElementById('tipologiaList').reset();
+                })
+                .catch(error => console.error('Error updating tipologia di crimine:', error));
+            });
+        });
+    </script>
+</body>
+</html>

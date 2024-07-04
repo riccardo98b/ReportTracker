@@ -23,7 +23,7 @@ public class TipologiaCrimineRestController {
 	private TipologiaCrimineService service;
 	
 		
-	@GetMapping("/all")  
+	@GetMapping("/all") 
 	public ResponseEntity<?> findAll(){  
 		List<TipologiaCrimine> tipologiacrimini=service.findAll();
 		if (!tipologiacrimini.isEmpty()) {
