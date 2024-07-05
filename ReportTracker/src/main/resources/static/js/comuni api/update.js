@@ -16,31 +16,39 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         const nome = document.getElementById('updateNome').value;
 
-        fetch(`/comuneAD/update/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ nome: nome })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(comune => {
-            // Aggiorna il risultato
-            const result = document.getElementById('result');
-            result.innerHTML = "<span class='ms_color_g'>Il comune è stato aggiornato con successo</span>";
-
-            // Pulisci il form
-            document.getElementById('updateNome').value = "";
-        })
-        .catch(error => {
-            console.error('Error updating comune:', error);
+        if(nome.trim() == " " || nome.trim() == ""){
             const result = document.getElementById('result');
             result.innerHTML = "<span class='ms_color_r'>Il comune non è stato aggiornato con successo</span>";
-        });
+            console.error('Error updating comune:', error);
+        }else{
+
+            fetch(`/comuneAD/update/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome: nome })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(comune => {
+                // Aggiorna il risultato
+                const result = document.getElementById('result');
+                result.innerHTML = "<span class='ms_color_g'>Il comune è stato aggiornato con successo</span>";
+    
+                // Pulisci il form
+                document.getElementById('updateNome').value = "";
+            })
+            .catch(error => {
+                const result = document.getElementById('result');
+                result.innerHTML = "<span class='ms_color_r'>Il comune non è stato aggiornato con successo</span>";
+                console.error('Error updating comune:', error);
+            });
+        }
+
     });
 });
