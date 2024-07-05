@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Lista dei Comuni</title>
-    <link rel="stylesheet" href="../css/comune css/tabella.css">
+ <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../img/icona_circolare.ico" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportTracker - Lista dei Comuni </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <style>
+     .ms_salva {
+        color: green;
+    }
+    
+     .ms_modifica {
+        color: orange;
+    }
+     .ms_elimina {
+        color: red;
+    }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
+    
+     <header class="">
+      <nav class="navbar navbar-expand-lg ms_nav_bar">
+        <div class="container-fluid">
+          <a class="navbar-brand ms_color_white ms_z-index " href="#"><img class="logo_img" src="../img/report_Tracker.png" alt="Logo report tracker"></a>
+          <a class="navbar-brand ms_color_white ms_position-a" href="#"><img class="logo_img" src="../img/report_Tracker-2.png" alt="Logo report tracker"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mx-4" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item pe-2 ms_wall">
+                <a class="nav-link ms_link active ms_color_white" aria-current="page" href="#"><strong>Home</strong></a>
+              </li>
+              <li class="nav-item pe-2 ms_wall">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><Strong>Statistiche</Strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><Strong>Segnalazioni</Strong></a>
+              </li>
+            </ul>
+            <ul class="navbar-nav w-100 justify-content-end">
+              <li class="nav-item me-2">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><Strong>Gestisci</Strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><strong>Logout</strong></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+    </header>
+    <div class="container mt-3">
         <div class="row">
             <h1 class="col-6">Elenco dei Comuni</h1>
             <div class="text-end col-6"><a class="ms_salva" href="http://localhost:8080/comuni/create">nuovo comune</a></div>
@@ -25,7 +73,12 @@
             <!-- Le righe verranno aggiunte qui dinamicamente -->
         </tbody>
     </table>
-
+ <!-- Footer -->
+    <footer class="footer">
+        <div class="containerf">
+            <p class="text-center">&copy; 2024 Report Tracker. All rights reserved.</p>
+        </div>
+    </footer>
     
       <script src="../js/comuni api/index.js"></script>
 </body>
