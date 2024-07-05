@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.model.FasciaOraria;
 import com.model.TipologiaCrimine;
 import com.my_methods.MyMethods;
 import com.repositories.TipologiaCrimineRepository;
@@ -49,15 +51,23 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
 	}
 	
 	
+	
+	
+
 	@Override
-	public TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologiacrimine) throws Exception{
-		if(repository.existsById(id)) {
-			return repository.save(tipologiacrimine);
-		} else {
-			throw new Exception("TipologiaCrimine con id " +id+ " non esiste");
+	public TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologia) throws Exception {
+		Optional<TipologiaCrimine> optc = repository.findById(id);
+		if(optc.isPresent()) {
+			TipologiaCrimine t = optc.get();
+			t.setNome(tipologia.getNome());
+
+			return repository.save(t);
+			
+		}
+		else {
+			throw new Exception("Tipologia crimine con id "+id+" non trovato.");
 		}
 	}
-	
 	
 	/*
 	public void saveCSV() throws IOException{

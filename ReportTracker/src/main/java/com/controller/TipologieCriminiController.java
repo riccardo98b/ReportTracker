@@ -10,17 +10,24 @@ public class TipologieCriminiController {
 	
 	@GetMapping("")
 	public String index() {
-		return "/tipologia crimine/index";
+		//return "/tipologia crimine/index";
+		return "/tipologiecrimini/index";
+
 	}
 	
 	@GetMapping("/create")
 	public String create() {
-		return "/tipologia crimine/create";
+		//return "/tipologia crimine/create";
+		return "/tipologiecrimini/create";
+
 	}
 	
-	@GetMapping("/update")
+	@GetMapping("/update/{id}")
 	public String update() {
-		return "/tipologia crimine/update";
+		//return "/tipologiecrimine/update";
+		return "/tipologiecrimini/update";
+
+		
 	}
 
 }

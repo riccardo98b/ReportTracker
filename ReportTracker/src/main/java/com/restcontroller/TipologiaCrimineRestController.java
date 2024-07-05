@@ -26,10 +26,11 @@ public class TipologiaCrimineRestController {
 	@GetMapping("/all") 
 	public ResponseEntity<?> findAll(){  
 		List<TipologiaCrimine> tipologiacrimini=service.findAll();
+		System.out.println(tipologiacrimini);
 		if (!tipologiacrimini.isEmpty()) {
-			return new ResponseEntity<>(tipologiacrimini,HttpStatus.OK);
+			return new ResponseEntity<>(tipologiacrimini, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>("tipologiacrimine non trovata",HttpStatus.OK);
+			return new ResponseEntity<>("Tipologia crimine non trovata",HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -45,7 +46,7 @@ public class TipologiaCrimineRestController {
 	
 	
 	
-	@PostMapping("/creatipologiac")  
+	@PostMapping("/create")  
 	public ResponseEntity<TipologiaCrimine> save(@RequestBody TipologiaCrimine tipologiacrimine){   
 		return new ResponseEntity<>(service.save(tipologiacrimine),HttpStatus.OK);
 	}
