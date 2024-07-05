@@ -12,21 +12,21 @@
     <header class="">
       <nav class="navbar navbar-expand-lg ms_nav_bar">
         <div class="container-fluid">
-          <a class="navbar-brand ms_color_white ms_z-index " href="#"><img class="logo_img" src="../img/report_Tracker.png" alt="Logo report tracker"></a>
-          <a class="navbar-brand ms_color_white ms_position-a" href="#"><img class="logo_img" src="../img/report_Tracker-2.png" alt="Logo report tracker"></a>
+          <a class="navbar-brand ms_color_white ms_z-index " href="http://localhost:8080"><img class="logo_img" src="../img/report_Tracker.png" alt="Logo report tracker"></a>
+          <a class="navbar-brand ms_color_white ms_position-a" href="http://localhost:8080"><img class="logo_img" src="../img/report_Tracker-2.png" alt="Logo report tracker"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse mx-4" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item pe-2 ms_wall">
-                <a class="nav-link ms_link active ms_color_white" aria-current="page" href="#"><strong>Home</strong></a>
+                <a class="nav-link ms_link active ms_color_white" aria-current="page" href="http://localhost:8080"><strong>Home</strong></a>
               </li>
               <li class="nav-item pe-2 ms_wall">
                 <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><Strong>Statistiche</Strong></a>
               </li>
               <li class="nav-item">
-                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="#"><Strong>Segnalazioni</Strong></a>
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="http://localhost:8080/segnalazioni"><Strong>Segnalazioni</Strong></a>
               </li>
             </ul>
             <ul class="navbar-nav w-100 justify-content-end">
@@ -42,9 +42,9 @@
       </nav> 
     </header>
 
-    <main>
-  <div class="d-flex justify-content-center my-5">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <main>
+            <div class="carousel-section">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -85,35 +85,33 @@
             </div>
         </div>
 
-<!-- Nuovo contenuto -->
+        <!-- Nuovo contenuto -->
         <div class="container mt-5">
+              <div class="info-container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1>Benvenuti su Report Tracker! </h1>
+                    <h1 style="color: black; text-align: center;"><strong>Benvenuti su Report Tracker!</strong></h1>
                     <br>
-                    <p>Il progetto Report Tracker si propone di migliorare la sicurezza a Milano e nelle sue province  attraverso una piattaforma web innovativa. Questo servizio permetterà agli utenti di segnalare e archiviare facilmente informazioni dettagliate sui micro crimini che avvengono nelle loro comunità. Dotata di un'interfaccia intuitiva, la piattaforma offrirà agli utenti la possibilità di filtrare le segnalazioni per città metropolitana e provincia, consentendo loro di monitorare in tempo reale la situazione della sicurezza in un'area specifica.</p>
-                    <br>
-                    <p>Oltre a facilitare la segnalazione e l'archiviazione delle informazioni, Report Tracker renderà accessibile uno storico completo delle segnalazioni, fornendo descrizioni accurate degli eventi e una panoramica dettagliata della distribuzione geografica dei micro crimini. Questo approccio non solo aumenterà la consapevolezza pubblica riguardo alla sicurezza, ma fornirà anche uno strumento essenziale per analizzare e affrontare efficacemente i problemi di sicurezza a livello locale.</p>
-                   <br>
-                    <p>Con una combinazione di funzionalità avanzate di filtraggio e visualizzazione dei dati, Report Tracker si propone di essere un alleato fondamentale per migliorare la sicurezza urbana e per rendere Milano e provincia luoghi più sicuri e informati!</p>
+                    <p>Siamo qui per aiutarti a segnalare e monitorare i micro crimini a Milano Centro e provincia. ReportTracker ti permette di inviare facilmente segnalazioni dettagliate sugli incidenti o altri problemi, consentendoti di contribuire attivamente alla sicurezza della tua comunità. Con un sistema intuitivo e filtri avanzati, puoi esplorare le segnalazioni per area specifica e non solo, ottenendo informazioni chiare sulle zone più colpite.</p> 
+                    <p>Il nostro obiettivo è fornire una piattaforma efficace e accessibile per mantenerti aggiornato su cosa accade nella tua città e promuovere la collaborazione per un ambiente urbano più sicuro e consapevole. </p>
+                    <p><strong>Unisciti a noi e insieme rendiamo Milano un posto migliore!</strong></p>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center">
                     <img src="../img/milano_logo.png" class="img-fluid rounded align-self-center" alt="Immagine rappresentativa">
                 </div>
             </div>
         </div>
-
+         </div>
         <div class="container mt-5">
-            <h1 class="text-center">Team</h1>
+            <h1 class="text-center"><strong>Ultime segnalazioni</strong></h1>
         </div>
-
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-4 mb-4">
                     <div class="card">
-                        <img src="img1.jpg" class="card-img-top" alt="...">
+                        <img src="../img/img1.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Riccardo Belloni</h5>
+                            <h5 class="card-title">Crimine</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -121,9 +119,9 @@
                 </div>
                 <div class="col-4 mb-4">
                     <div class="card">
-                        <img src="img2.jpg" class="card-img-top" alt="...">
+                        <img src="../img/img2.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Samuele Lettieri</h5>
+                            <h5 class="card-title">Crimine</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
@@ -131,37 +129,16 @@
                 </div>
                 <div class="col-4 mb-4">
                     <div class="card">
-                        <img src="img3.jpg" class="card-img-top" alt="...">
+                        <img src="../img/img3.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Nicolò Zorzi</h5>
+                            <h5 class="card-title">Crimine</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-4 mb-4">
-                    <div class="card">
-                        <img src="img4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Pasquale La Gatta</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 mb-4">
-                    <div class="card">
-                        <img src="img5.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Christian Canicoba</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-
     </main>
     
      <!-- Footer -->

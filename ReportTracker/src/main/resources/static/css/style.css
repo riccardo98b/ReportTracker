@@ -40,14 +40,15 @@
 /* FINE NAVBAR */
 
 main {
-    margin-bottom: 100px; /* Aggiunge margine inferiore per evitare sovrapposizione con il footer */
+    margin-bottom: 50px; /* Aggiunge margine inferiore per evitare sovrapposizione con il footer */
+    padding-top: 0; /* Rimuove il padding superiore */
 }
 
 /* Stile personalizzato per dimensioni fisse del carosello */
 .carousel {
     position: relative; /* Necessario per posizionare correttamente l'overlay */
-    width: 1200px; /* Imposta una larghezza fissa per il carosello */
-    height: 600px; /* Imposta un'altezza fissa per il carosello */
+    width: 100%; /* Imposta una larghezza fissa per il carosello */
+    height: 700px; /* Imposta un'altezza fissa per il carosello */
     margin: auto; /* Centra il carosello orizzontalmente */
 }
 
@@ -66,7 +67,6 @@ main {
     height: 100%;
     object-fit: cover; /* Adatta le immagini mantenendo le proporzioni */
     object-position: center; /* Centra l'immagine */
-    border-radius: 15px; /* Applica bordi stondate alle immagini */
 }
 
 .carousel-control-prev,
@@ -78,7 +78,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2); /* Sfondo semi-trasparente per i pulsanti */
+    background: rgba(0, 0, 0, 0.3); /* Sfondo semi-trasparente per i pulsanti */
 }
 
 .carousel-control-prev-icon,
@@ -119,12 +119,30 @@ main {
     padding: 10px 40px; /* Aumenta la dimensione del pulsante */
 }
 
+.info-container{
+    background-color: #02A9F7; 
+    border-radius: 20px; 
+    padding: 50px;
+    color: white;
+    text-align: justify;
+}
 /* Stile per l'immagine centrata e con bordi arrotondati */
 .align-self-center {
     border-radius: 15px; /* Arrotonda i bordi dell'immagine */
     display: flex;
     align-items: center; /* Centra l'immagine verticalmente */
     justify-content: center; /* Centra l'immagine orizzontalmente */
+}
+
+.card{
+    border-radius: 20px;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Adatta le immagini mantenendo le proporzioni */
+    object-position: center; /* Centra l'immagine */
 }
 
 /* Assicura che il footer sia sempre visibile */
