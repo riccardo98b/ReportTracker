@@ -24,10 +24,16 @@ public class indexController {
 		return "/guest/index";
 	}
 	
+	
+	@GetMapping("/errore404")
+	public String errore404() {
+		return "/errore/errore";
+	}
+	
   @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new Utente());
-        return "/gues/register";
+        return "/guest/register";
     }
 
     @PostMapping("/register")
@@ -37,7 +43,7 @@ public class indexController {
             return "redirect:/guest/login";
         } catch (Exception e) {
             model.addAttribute("error", "An error occurred while registering the user.");
-            return "/gues/tregister";
+            return "/guest/register";
         }
     }
 
