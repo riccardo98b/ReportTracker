@@ -1,8 +1,11 @@
 package com.services.segnalazione;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.model.Comune;
 import com.model.Segnalazione;
+import com.model.TipologiaCrimine;
 
 public interface SegnalazioneService {
 	
@@ -20,6 +23,15 @@ public interface SegnalazioneService {
 	
 	//SOVRASCRIVE UNA SEGNALAZIONE DI ID SPECIFICATO
 	Segnalazione updateById(Long id, Segnalazione segnalazione)throws Exception;
+	
+	//RESTITUISCE LA LISTA DELLE SEGNALAZIONI DELLA DATA SPECIFICA
+	List<Segnalazione> findByData(LocalDate data)throws Exception;
+	
+	//RESTITUISCE LA LISTA DELLE SEGNALAZIONI DEL COMUNE SPECIFICATO
+	List<Segnalazione> findByComune(String comune)throws Exception;
+	
+	//RESTITUISCE LA LISTA DELLE SEGNALAZIONI DELLA TIPOLOGIA DI CRIMINE SPECIFICATA
+	List<Segnalazione> findByTipologiaCrimine(String tipologiacrimine)throws Exception;
 
 	
 }

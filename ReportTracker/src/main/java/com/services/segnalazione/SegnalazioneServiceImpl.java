@@ -1,12 +1,13 @@
 package com.services.segnalazione;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.model.Comune;
 import com.model.FasciaOraria;
 import com.model.Segnalazione;
@@ -69,8 +70,57 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 	}
 
 	
+	@Override
+	public List<Segnalazione> findByData(LocalDate data) throws Exception {
+	    List<Segnalazione> segnalazioni = repository.findByData(data);
+
+	    if (!segnalazioni.isEmpty()) {
+	        return segnalazioni;
+	    } else {
+	        throw new Exception("Non ci sono segnalazioni in data: " + data);
+	    }
+	}
 	
 	
+	@Override
+	public List<Segnalazione> findByComune(String comune) throws Exception{
+		List<Segnalazione> all=repository.findAll();
+		List<Segnalazione> segnalazioni = new ArrayList<Segnalazione>();
+		for(Segnalazione s:all) {
+			if(s.getComune().getNome().equalsIgnoreCase(comune)) {
+				segnalazioni.add(s);
+			}
+		}
+		if(!segnalazioni.isEmpty()) {
+			return segnalazioni;
+		}
+		throw new Exception("Non ci sono segnalazioni nel comune: " + comune);
+	}
+	
+	
+	@Override
+	public List<Segnalazione> findByTipologiaCrimine(String tipologiacrimine) throws Exception{
+		List<Segnalazione> all=repository.findAll();
+		List<Segnalazione> segnalazioni = new ArrayList<Segnalazione>();
+		for(Segnalazione s:all) {
+			boolean contiene=false;
+			for(TipologiaCrimine t:s.getTipologiaCrimine()) {
+				if(t.getNome().equals(tipologiacrimine)) {
+					contiene=true;
+				}
+			}
+			if(contiene) {
+				segnalazioni.add(s);
+			}
+		}
+		if(!segnalazioni.isEmpty()) {
+			return segnalazioni;
+		}
+		throw new Exception("Non ci sono segnalazioni di tipologia di crimine: " + tipologiacrimine);
+	}
+	
+	
+}
 	
 	
 	
@@ -81,4 +131,4 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 	
 	
 
-}
+
