@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(data);
         const segnalazioniList = document.getElementById('segnalazioniList');
         if (data.length === 0) {
-            segnalazioniList.innerHTML = '<li>Nessun comune trovato</li>';
+            segnalazioniList.innerHTML = '<li>Nessun segnalazione trovata</li>';
         } else {
             data.forEach(segnalazioni => {
                 segnalazioniList.innerHTML += `<div class="row mt-5">

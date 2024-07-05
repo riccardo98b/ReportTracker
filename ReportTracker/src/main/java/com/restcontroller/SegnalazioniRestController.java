@@ -38,6 +38,7 @@ public class SegnalazioniRestController {
 	@PostMapping("/save/segnalazione")
 	public ResponseEntity<?> save(@RequestBody Segnalazione segnalazione){
 		try {
+			//segnalazione.setUtente(null)
 			return new ResponseEntity<>(service.save(segnalazione), HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

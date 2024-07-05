@@ -14,18 +14,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	/*@Bean
+	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable().authorizeHttpRequests()
-			.requestMatchers("/", "/register", "/login")
+			.requestMatchers("/guest/index", "/guest/segnalazioni", "/guest/statistiche", "/login/login", "/login/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all"  )
 			.permitAll()
-	
-			.requestMatchers(HttpMethod.POST, "/home").authenticated()
+			
+			.requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
+			.hasAuthority("ADMIN")
+			
+			.requestMatchers(HttpMethod.POST, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
+            .requestMatchers(HttpMethod.PUT, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
+            .requestMatchers(HttpMethod.DELETE, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
+            
+            .requestMatchers("/segnalazioni/**", "/user/index")
+			.hasAuthority("USER")
+            
+			.requestMatchers(HttpMethod.POST, "/segnalazioni/**").hasAuthority("USER")
+            .requestMatchers(HttpMethod.PUT,"/segnalazioni/**").hasAuthority("USER")
+            .requestMatchers(HttpMethod.DELETE, "/segnalazioni/**").hasAuthority("USER")
 	
 			.anyRequest().authenticated()
 			
-			.and().formLogin().loginPage("/login").defaultSuccessUrl("/home", true) .permitAll().and().logout().logoutSuccessUrl("/").invalidateHttpSession(true)
+			.and().formLogin().loginPage("/login/login").defaultSuccessUrl("/user/index", true) .permitAll().and().logout().logoutSuccessUrl("/").invalidateHttpSession(true)
             .deleteCookies("JSESSIONID")
             .permitAll(). and().exceptionHandling()
 			
@@ -34,11 +46,11 @@ public class SecurityConfig {
 
 		return http.build();
 		
-	}*/
+	}
 	
 	
     // Definisce la catena di filtri di sicurezza
-    @Bean
+  /*  @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     	// Disabilita la protezione CSRF 
         http.csrf().disable()
@@ -50,7 +62,7 @@ public class SecurityConfig {
             .logout().disable(); // Disabilita il logout
 
         return http.build();// Costruisce e restituisce l'oggetto SecurityFilterChain
-    }
+    }*/
 	
     
     

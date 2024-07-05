@@ -33,8 +33,6 @@ public class FasciaOrariaRestController {
 		// http://localhost:8080/api/v1/fasciaOraria    
 		
 		@GetMapping("/all")
-	
-		
 		public ResponseEntity<?> findAll() throws Exception{
 			List<FasciaOraria> fascOraria = service.findAll();
 			if(!fascOraria.isEmpty()) {
