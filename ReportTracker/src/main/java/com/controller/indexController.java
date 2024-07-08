@@ -11,8 +11,6 @@ import com.model.Utente;
 import com.services.utente.UtenteService;
 
 
-
-
 @Controller
 public class indexController {
 
@@ -30,26 +28,26 @@ public class indexController {
 		return "/errore/errore";
 	}
 	
-  @GetMapping("/register")
+  @GetMapping("/registrazione")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new Utente());
-        return "/guest/register";
+        return "/login/registrazione";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registrazione")
     public String registerUser(@ModelAttribute Utente user, Model model) {
         try {
             userService.save(user);
-            return "redirect:/guest/login";
+            return "redirect:/login/login";
         } catch (Exception e) {
             model.addAttribute("error", "An error occurred while registering the user.");
-            return "/guest/register";
+            return "/login/registrazione";
         }
     }
 
-    @GetMapping("/login")
+    @GetMapping("/accedi")
     public String showLoginForm() {
-        return "/guest/login";
+        return "/login/login";
     }
 
     @GetMapping("/home")
