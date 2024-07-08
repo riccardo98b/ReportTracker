@@ -12,6 +12,7 @@
 .ms_nav_bar {
     background-color: #02A9F7 !important;
     padding-left: 10px;
+   
 }
 
 .ms_color_white {
@@ -37,7 +38,7 @@
 .ms_wall {
     border-right: 3px solid white;
 }
-/* FINE NAVBAR */
+
 
 main {
     margin-bottom: 50px; /* Aggiunge margine inferiore per evitare sovrapposizione con il footer */
