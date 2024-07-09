@@ -16,17 +16,17 @@ import com.repositories.FasciaOrariaRepository;
 public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaService{
 	
 	@Autowired
-	private FasciaOrariaRepository fascOrariaRepository;
+	private FasciaOrariaRepository fasciaOrariaRepository;
 
 	@Override
 	public FasciaOraria getFasciaOrariaById(Long id) {
-        return  fascOrariaRepository.findById(id).orElse(null);
+        return  fasciaOrariaRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	public void removeFasciaOraria(Long id) throws Exception {
-		if(fascOrariaRepository.existsById(id)) {
-			fascOrariaRepository.deleteById(id);
+		if(fasciaOrariaRepository.existsById(id)) {
+			fasciaOrariaRepository.deleteById(id);
 		}else {
 			throw new Exception("ID non trovato"); 
 		}
@@ -35,11 +35,11 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 
 	@Override
 	public FasciaOraria updateFasciaOraria(Long id,FasciaOraria fasciaOraria) throws Exception{
-		Optional<FasciaOraria> optf = fascOrariaRepository.findById(id);
+		Optional<FasciaOraria> optf = fasciaOrariaRepository.findById(id);
 			if(optf.isPresent()) {
 				FasciaOraria f = optf.get();
 				f.setNome(fasciaOraria.getNome());
-				return fascOrariaRepository.save(f);
+				return fasciaOrariaRepository.save(f);
 				
 			}
 			else {
@@ -49,7 +49,7 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 
 	@Override
 	public FasciaOraria addFasciaOraria(FasciaOraria fasciaOraria) {
-        return fascOrariaRepository.save(fasciaOraria);
+        return fasciaOrariaRepository.save(fasciaOraria);
 
 		
 	}
@@ -57,7 +57,7 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	  
 	@Override
 	public List<FasciaOraria> findAll() throws Exception {
-		return (List<FasciaOraria>) fascOrariaRepository.findAll();
+		return (List<FasciaOraria>) fasciaOrariaRepository.findAll();
 	}
 	
 	
@@ -97,5 +97,14 @@ public class FasciaOrariaServiceImpl extends MyMethods implements FasciaOrariaSe
 	}*/
 	
 	 
+	@Override
+	public FasciaOraria findByNomeFasciaOraria(String fasciaOraria) throws Exception {
+		Optional<FasciaOraria> optFO = fasciaOrariaRepository.findByNome(fasciaOraria);
+		if(optFO.isPresent()) {
+			return optFO.get();
+		}
+		
+		throw new Exception("Il la faccia oraria " + fasciaOraria + " non e stata trovata"); 
+	}
 
 }

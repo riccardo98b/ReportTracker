@@ -15,6 +15,7 @@ public class Ruolo {
 
 	@Column(nullable = false)
 	private String nome;
+	
 
 	public Long getId() {
 		return id;
@@ -31,6 +32,8 @@ public class Ruolo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	
 	
 
 }

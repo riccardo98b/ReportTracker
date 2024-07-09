@@ -9,44 +9,38 @@
 <body>
     <div class="container">
 
-        <form>
+        <form id="segnalazioneForm" enctype="multipart/form-data">
             <div class="mb-3">
-              <label for="descrizione" class="form-label">Descrizione dell'accaduto</label>
-              <textarea type="text" class="form-control" id="descrizione"></textarea>
+                <label for="descrizione" class="form-label">Descrizione dell'accaduto</label>
+                <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
             </div>
             <div class="mb-3">
-              <label for="data" class="form-label">Data</label>
-              <input type="date" class="form-control" id="data">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" name="data">
             </div>
             <div class="mb-3">
-                <label for="file" class="form-label">Inserisci una foto o video</label> <br>
-                <input type="file" id="fileInput" name="file">
+                <label for="foto_o_video" class="form-label">Inserisci una foto o video</label><br>
+                <input type="text" id="foto_o_video" name="foto_o_video">
             </div>
             <div class="mb-3">
                 <label for="comune" class="form-label">Comune</label>
-                <select id="comune">
-                    
-                </select>
+                <select class="form-control" id="comune" name="comune"></select>
             </div>
             <div class="mb-3">
                 <label for="fascia_oraria" class="form-label">Fascia Oraria</label>
-                <select id="fascia_oraria">
-                    
-                </select>
+                <select class="form-control" id="fascia_oraria" name="fascia_oraria"></select>
             </div>
             <div class="mb-3">
                 <label for="tipologia_crimine" class="form-label">Tipologia Crimine</label>
-                <select id="tipologia_crimine">
-                    
-                </select>
+                <select class="form-control" id="tipologia_crimine" name="tipologia_crimine"></select>
             </div>
             <div class="btn btn-primary" onclick="creaSeg()">Carica segnalazione</div>
-          </form>
+        </form>
 
 
-          <div class="mt-5" id="result">
+        <div class="mt-5" id="result">
 
-          </div>
+        </div>
     </div>
       <script src="../js/segnalazioni/create.js"></script>
 </body>

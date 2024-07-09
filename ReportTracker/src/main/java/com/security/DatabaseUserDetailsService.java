@@ -1,8 +1,8 @@
 package com.security;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,12 +42,11 @@ public class DatabaseUserDetailsService implements UserDetailsService{
 	}
 	
 	
-    // Questo metodo restituisce i ruoli o le autorità dell'utente
-    private Collection<? extends GrantedAuthority> getAuthorities(Utente utente) {
-    	
-     // Per semplicità, a tutti gli utenti viene assegnato il ruolo "USER"
-     return Arrays.asList(new SimpleGrantedAuthority("USER"));
-    }
+	 private Collection<? extends GrantedAuthority> getAuthorities(Utente utente) {
+	        return utente.getRuolo().stream()
+	                .map(ruolo -> new SimpleGrantedAuthority(ruolo.getNome()))
+	                .collect(Collectors.toSet());
+	 }
 }
 	
 

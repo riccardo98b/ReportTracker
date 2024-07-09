@@ -17,17 +17,17 @@ import com.repositories.TipologiaCrimineRepository;
 public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaCrimineService{
 	
 	@Autowired
-	private TipologiaCrimineRepository repository;
+	private TipologiaCrimineRepository tipologiaCrimineRepository;
 	
 	@Override
 	public List<TipologiaCrimine> findAll(){
-		return (List<TipologiaCrimine>) repository.findAll(); // cast
+		return (List<TipologiaCrimine>) tipologiaCrimineRepository.findAll(); // cast
 	}
 	
 	
 	@Override
 	public TipologiaCrimine findbyId(Integer id) throws Exception{
-		Optional<TipologiaCrimine> optTipologiaCrimine = repository.findById(id);  // predefinito nel crud
+		Optional<TipologiaCrimine> optTipologiaCrimine = tipologiaCrimineRepository.findById(id);  // predefinito nel crud
 		if(optTipologiaCrimine.isPresent()) {
 			return optTipologiaCrimine.get();
 		}
@@ -37,14 +37,14 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
 	
 	@Override
 	public TipologiaCrimine save(TipologiaCrimine tipologiacrimine) {
-		return repository.save(tipologiacrimine);
+		return tipologiaCrimineRepository.save(tipologiacrimine);
 	}
 	
 	
 	@Override
 	public void deleteById(Integer id) throws Exception {
-		if(repository.existsById(id)) {
-			repository.deleteById(id);
+		if(tipologiaCrimineRepository.existsById(id)) {
+			tipologiaCrimineRepository.deleteById(id);
 		} else {
 		throw new Exception("TipologiaCrimine con id " +id+ " non esiste");
 		}
@@ -56,12 +56,12 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
 
 	@Override
 	public TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologia) throws Exception {
-		Optional<TipologiaCrimine> optc = repository.findById(id);
+		Optional<TipologiaCrimine> optc = tipologiaCrimineRepository.findById(id);
 		if(optc.isPresent()) {
 			TipologiaCrimine t = optc.get();
 			t.setNome(tipologia.getNome());
 
-			return repository.save(t);
+			return tipologiaCrimineRepository.save(t);
 			
 		}
 		else {
@@ -92,7 +92,19 @@ public class TipologiaCrimineServiceImpl extends MyMethods implements TipologiaC
             e.printStackTrace();
         }
     } */
+
 	
+	
+
+	@Override
+	public TipologiaCrimine findByNomeTipologiaCrimine(String tipologiacrimine) throws Exception {
+		Optional<TipologiaCrimine> optTC = tipologiaCrimineRepository.findByNome(tipologiacrimine);
+		if(optTC.isPresent()) {
+			return optTC.get();
+		} 
+		
+		throw new Exception("Il la faccia oraria " + tipologiacrimine + " non e stata trovata"); 
+	}
 }
 
 

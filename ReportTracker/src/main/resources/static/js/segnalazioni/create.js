@@ -1,14 +1,18 @@
+let comuni = [];
+let fascie_orarie = [];
+let tipologie_crimine = [];
 document.addEventListener("DOMContentLoaded", function() {
     //COMUNI API
     fetch('/comuneAD/all')
     .then(response => response.json())
     .then(data => {
         const comuniList = document.getElementById('comune');
-        data.forEach(comuni => {
-            comuniList.innerHTML += `<option value="${comuni.nome}">${comuni.nome}</option>`;
+        data.forEach(comune => {
+            comuni.push(comune);
+            comuniList.innerHTML += `<option value="${comune.id}">${comune.nome}</option>`;
         });
     })
-    .catch(error => console.error('Error fetching comuni:', error));  
+    .catch(error => console.error('Error fetching comuni:', error)); 
 
     //FASCIA ORARIA API
     fetch('/fasciaorariaAD/all')
@@ -16,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         const fascia_orariaList = document.getElementById('fascia_oraria');
         data.forEach(fascia_oraria => {
-            fascia_orariaList.innerHTML += `<option value="${fascia_oraria.nome}">${fascia_oraria.nome}</option>`;
+            fascie_orarie.push(fascia_oraria);
+            fascia_orariaList.innerHTML += `<option value="${fascia_oraria.id}">${fascia_oraria.nome}</option>`;
         });
     })
     .catch(error => console.error('Error fetching fascia oraria:', error)); 
@@ -27,33 +32,89 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         const tipologia_crimineList = document.getElementById('tipologia_crimine');
         data.forEach(tipologia_crimine => {
-            tipologia_crimineList.innerHTML += `<option value="${tipologia_crimine.nome}">${tipologia_crimine.nome}</option>`;
+            tipologie_crimine.push(tipologia_crimine);
+            tipologia_crimineList.innerHTML += `<option value="${tipologia_crimine.id}">${tipologia_crimine.nome}</option>`;
         });
     })
     .catch(error => console.error('Error fetching tipologie crimini:', error)); 
+    console.log(tipologie_crimine);
 });
+
 
 function creaSeg() {
     console.log("ciao");
     const descrizione = document.getElementById('descrizione').value;
     const data = document.getElementById('data').value;
-    const fileInput = document.getElementById('fileInput').files[0];
+    const foto_o_video = document.getElementById('foto_o_video').value;
     const comune = document.getElementById('comune').value;
     const fascia_oraria = document.getElementById('fascia_oraria').value;
     const tipologia_crimine = document.getElementById('tipologia_crimine').value;
 
-    const dati = {
+    // Converti la data nel formato ISO 8601 (yyyy-MM-dd)
+   const dataISO = new Date(data).toISOString().split('T')[0];
+    // Rimuovi eventuali caratteri extra dopo la conversione
+    const dataFormatted = dataISO.replace(/-/g, '/');
+    let idC;
+    let nomeC;
+
+    let idF;
+    let nomeF;
+
+    let idTC;
+    let nomeTC;
+
+    console.log(comuni);
+
+    comuni.forEach(element =>{
+        if(comune == element.id){
+            idC = element.id;
+            nomeC = element.nome;
+        }
+    })
+
+    fascie_orarie.forEach(element =>{
+        if(fascia_oraria == element.id){
+            idF = element.id;
+            nomeF = element.nome;
+        }
+    })
+    console.log(idF + " "+ nomeF);
+
+    tipologie_crimine.forEach(element =>{
+        if(tipologia_crimine == element.id){
+            idTC = element.id;
+            nomeTC = element.nome;
+        }
+    })
+
+    console.log(idTC + " "+ nomeTC);
+
+    let dati = {
         descrizione: descrizione,
         data: data,
-        comune: comune,
-        fascia_oraria: fascia_oraria,
-        tipologia_crimine: tipologia_crimine
-    };
+        foto_o_video: foto_o_video,
+        utente: {
+        },
+        comune: {
+            id: idC,
+            nome: nomeC
+        },
+        fasciaOraria: {
+            id: idF,
+            nome: nomeF
+        },
+        tipologiaCrimine: [
+            {
+                id: idTC,
+                nome: nomeTC
+            }
+        ]        
+    }; 
 
     const oggi = new Date();
-    const dataSegnalazione = new Date(data);
+    const dataSegnalazione = new Date(dataFormatted);
 
-    if (dataSegnalazione > oggi) {
+   if (dataSegnalazione > oggi) {
         const result = document.getElementById('result');
         result.innerHTML = "<span class='ms_color_r'>La data non può essere dopo la data odierna</span>";
         console.error('La data non può essere dopo la data odierna');
@@ -62,19 +123,23 @@ function creaSeg() {
         result.innerHTML = "<span class='ms_color_r'>Tutti i campi sono obbligatori</span>";
         console.error('Tutti i campi sono obbligatori');
     } else {
-        fetch('/segnalazioni/save/segnalazione', {
+        
+        fetch('/segnalazioni/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(dati)
         })
-        .then(response => response.json())
+        .then(response => response.json(),
+            console.log(dati)
+        )
         .then(data => {
+         console.log('Success:', data);
             // Pulisci il form
             document.getElementById('descrizione').value = "";
             document.getElementById('data').value = "";
-            document.getElementById('fileInput').value = "";
+            document.getElementById('tipologia_crimine').value= "";
             document.getElementById('comune').value = "";
             document.getElementById('fascia_oraria').value = "";
             document.getElementById('tipologia_crimine').value = "";
@@ -88,5 +153,5 @@ function creaSeg() {
             result.innerHTML = "<span class='ms_color_r'>La segnalazione non è stata creata</span>";
             console.error('Error saving segnalazione:', error);
         });
-    }
+    }   
 }

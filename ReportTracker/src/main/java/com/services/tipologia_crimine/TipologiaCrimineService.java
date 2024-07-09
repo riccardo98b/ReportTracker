@@ -21,6 +21,8 @@ public interface TipologiaCrimineService {
 	TipologiaCrimine updateById(Integer id, TipologiaCrimine tipologia) throws Exception;
 	
 	
+	TipologiaCrimine findByNomeTipologiaCrimine(String tipologiacrimine)throws Exception;
+	
 	//void saveCSV() throws IOException;
 	
 }

@@ -19,29 +19,29 @@ public class indexController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "/guest/index";
+		return "guest/index";
 	}
 	
 	
 	@GetMapping("/errore404")
 	public String errore404() {
-		return "/errore/errore";
+		return "errore/errore";
 	}
 	
   @GetMapping("/registrazione")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new Utente());
-        return "/login/registrazione";
+        return "login/registrazione";
     }
 
     @PostMapping("/registrazione")
     public String registerUser(@ModelAttribute Utente user, Model model) {
         try {
             userService.save(user);
-            return "redirect:/login/login";
+            return "redirect:login/login";
         } catch (Exception e) {
             model.addAttribute("error", "An error occurred while registering the user.");
-            return "/login/registrazione";
+            return "login/registrazione";
         }
     }
 
@@ -52,7 +52,7 @@ public class indexController {
 
     @GetMapping("/home")
     public String homePage() {
-        return "/user/index";
+        return "guest/index";
     }
 }
 

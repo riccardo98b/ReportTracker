@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
+
 
 
 import com.model.FasciaOraria;
 import com.services.fascia_oraria.FasciaOrariaService;
-@Controller
+@RestController
 @RequestMapping("/fasciaorariaAD")
 
 public class FasciaOrariaRestController {
 	
-	
 
-	
-		
 	@Autowired
 		private FasciaOrariaService service;
 		
@@ -96,16 +94,6 @@ public class FasciaOrariaRestController {
 	            return new ResponseEntity<>("Errore durante l'aggiornamento della fascia oraria", HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
 	        
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 	}
 }

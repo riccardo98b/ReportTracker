@@ -16,41 +16,58 @@ public class SecurityConfig {
 
 	/*@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
 		http.csrf().disable().authorizeHttpRequests()
-			.requestMatchers("/guest/index", "/guest/segnalazioni", "/guest/statistiche", "/login/login", "/login/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all"  )
-			.permitAll()
-			
-			.requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
-			.hasAuthority("ADMIN")
-			
-			.requestMatchers(HttpMethod.POST, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**").hasAuthority("ADMIN")
-            
-            .requestMatchers("/segnalazioni/**", "/user/index")
-			.hasAuthority("USER")
-            
-			.requestMatchers(HttpMethod.POST, "/segnalazioni/**").hasAuthority("USER")
-            .requestMatchers(HttpMethod.PUT,"/segnalazioni/**").hasAuthority("USER")
-            .requestMatchers(HttpMethod.DELETE, "/segnalazioni/**").hasAuthority("USER")
-	
-			.anyRequest().authenticated()
-			
-			.and().formLogin().loginPage("/login/login").defaultSuccessUrl("/user/index", true) .permitAll().and().logout().logoutSuccessUrl("/").invalidateHttpSession(true)
-            .deleteCookies("JSESSIONID")
-            .permitAll(). and().exceptionHandling()
-			
-	
-			.accessDeniedPage("/access-denied.html");
+		.requestMatchers("/", "/accedi", "/registrazione", "/errore404", "/segnalazioni")
+		.permitAll()
 
-		return http.build();
+		.anyRequest().authenticated()
 		
+		.and().formLogin().loginPage("/accedi").defaultSuccessUrl("/segnalazioni", true) .permitAll().and().logout().logoutSuccessUrl("/").invalidateHttpSession(true)
+        .deleteCookies("JSESSIONID")
+        .permitAll(). and().exceptionHandling()
+		
+
+		.accessDeniedPage("/access-denied.html");
+	
+	    return http.build();
 	}*/
 	
+	@Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        
+        http.csrf().disable()
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all")
+                .permitAll()
+                
+                .requestMatchers("/segnalazioni/save", "/segnalazioni/create")
+                .hasAuthority("USER")
+                
+                .requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
+                .hasAuthority("ADMIN")
+
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/accedi")
+                .defaultSuccessUrl("/segnalazioni", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll()
+            )
+            .exceptionHandling(exception -> exception
+                .accessDeniedPage("/errore404")
+            );
+
+        return http.build();
+    }
 	
     // Definisce la catena di filtri di sicurezza
-   @Bean
+   /* @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     	// Disabilita la protezione CSRF 
         http.csrf().disable()
@@ -62,14 +79,13 @@ public class SecurityConfig {
             .logout().disable(); // Disabilita il logout
 
         return http.build();// Costruisce e restituisce l'oggetto SecurityFilterChain
-    }
+    }*/
 	
     
     
     
 	@Bean
     // Definisce il servizio per caricare i dettagli dell'utente dal database
-
 	DatabaseUserDetailsService userDetailsService() {
 		// Crea un'istanza di DatabaseUserDetailsService
 		return new DatabaseUserDetailsService();

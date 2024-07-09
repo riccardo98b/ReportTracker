@@ -16,16 +16,16 @@ import com.repositories.ComuneRepository;
 public class ComuneServiceImpl extends MyMethods implements ComuneService{
 
 	@Autowired
-	private ComuneRepository repository;
+	private ComuneRepository comuneRepository;
 	
 	@Override
 	public List<Comune> findAll() {
-		return (List<Comune>) repository.findAll();
+		return (List<Comune>) comuneRepository.findAll();
 	}
 
 	@Override
 	public Comune findById(Long id) throws Exception {
-		Optional<Comune> optComune = repository.findById(id);
+		Optional<Comune> optComune = comuneRepository.findById(id);
 		if(optComune.isPresent()) {
 			return optComune.get();
 		}
@@ -34,13 +34,13 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 
 	@Override
 	public Comune save(Comune comune) {
-		return repository.save(comune);
+		return comuneRepository.save(comune);
 	}
 
 	@Override
 	public void deleteById(Long id) throws Exception {
-		if(repository.existsById(id)) {
-			repository.deleteById(id);
+		if(comuneRepository.existsById(id)) {
+			comuneRepository.deleteById(id);
 		} else {
 			throw new Exception("Comune con id:"+id+" non esiste");
 		}
@@ -48,13 +48,13 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 
 	@Override
 	public Comune updateById(Long id, Comune comune) throws Exception {
-	    Optional<Comune> optionalComune = repository.findById(id);
+	    Optional<Comune> optionalComune = comuneRepository.findById(id);
 	    if(optionalComune.isPresent()) {
 	        Comune existingComune = optionalComune.get();
 	        // Aggiorna i campi dell'oggetto esistente con i valori del nuovo oggetto
 	        existingComune.setNome(comune.getNome());
 	        // Aggiungi altri campi da aggiornare se necessario
-	        return repository.save(existingComune);
+	        return comuneRepository.save(existingComune);
 	    } else {
 	        throw new Exception("Comune con id: " + id + " non esiste");
 	    }
@@ -89,5 +89,16 @@ public class ComuneServiceImpl extends MyMethods implements ComuneService{
 		}
 		
 	}*/
+	
+
+	@Override
+	public Comune findByNomeComune(String comune) throws Exception {
+		Optional<Comune> optC = comuneRepository.findByNome(comune);
+		if(optC.isPresent()) {
+			return optC.get();
+		}
+		
+		throw new Exception("Il comune " + comune + " non e stato trovato"); 
+	}
 	
 }

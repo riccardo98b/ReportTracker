@@ -5,11 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.model.Comune;
+import com.model.Ruolo;
 
 @Repository
-public interface ComuneRepository extends JpaRepository<Comune, Long>{
-
-	Optional<Comune> findByNome(String nome);
-	
+public interface RuoloRepository extends JpaRepository<Ruolo, Long> {
+	Optional<Ruolo> findByNome(String nome);
 }

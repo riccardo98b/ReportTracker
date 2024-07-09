@@ -38,16 +38,15 @@ public class Utente {
     @Column(nullable = false)
     private String cognome;
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinTable(name = "ruolo_utente", joinColumns = {
-				@JoinColumn(name = "ruolo_id", referencedColumnName = "id")
-			},
-			inverseJoinColumns = {
-				@JoinColumn(name = "utente_id", referencedColumnName = "id") 
-			}
-	)
-	private Set<Ruolo> ruolo = new HashSet<>();
-    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "ruolo_utente", joinColumns = {
+                @JoinColumn(name = "utente_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                @JoinColumn(name = "ruolo_id", referencedColumnName = "id") 
+            }
+    )
+    private Set<Ruolo> ruolo = new HashSet<>();
     
 
 	public Long getId() {
@@ -105,7 +104,8 @@ public class Utente {
 	public void setRuolo(Set<Ruolo> ruolo) {
 		this.ruolo = ruolo;
 	}
+
+
+
 	
-	
- 	
 }

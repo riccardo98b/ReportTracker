@@ -22,6 +22,8 @@ public interface FasciaOrariaService {
 
    //void saveCsv() throws Exception;
 
+    
+    FasciaOraria findByNomeFasciaOraria(String fasciaOraria)throws Exception;
 	
 
 }
