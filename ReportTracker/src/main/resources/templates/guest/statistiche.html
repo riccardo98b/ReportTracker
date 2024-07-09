@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>ChartJS Tutorial</title>
+</head>
+<body>
+    <div class="container">
+        <canvas id="myCanvas"></canvas>
+    </div>
+
+    <script>
+        let myCanvas = document.getElementById("myCanvas").getContext("2d");
+        let myLabels = ["Milano", "Sesto San Giovanni","Cinisello Balsamo","Cologno Monzese","Rho","Rozzano","Pioltello","San Donato Milanese","Bollate","Paderno Dugnano"];
+        let myData = [5126, 804, 682, 581, 350, 321, 298, 230, 223, 219];
+
+        let chart = new Chart(myCanvas, {
+            type: 'bar',
+            data: {
+                labels: myLabels,
+                datasets: [{
+                    label: "Comuni più colpiti dalla microcriminalità",
+                    data: myData,
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)', // Optional: Adds color to bars
+                    borderColor: 'rgba(0, 123, 255, 1)', // Optional: Adds border color to bars
+                    borderWidth: 1 // Optional: Sets the border width
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Numero di episodi di microcriminalità',
+                            padding: {
+                                top: 10,
+                                bottom: 20
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>
