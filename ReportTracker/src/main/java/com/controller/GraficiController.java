@@ -1,13 +1,20 @@
 package com.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class GraficiController {
 	
-	@RequestMapping("/statistiche")
-	public String grafici() {
+	@GetMapping("/statistiche")
+	public String graficiGuest() {
 		return "/guest/statistiche";
 	}
+	
+	@GetMapping("/statisticheLogged")
+	public String grafici() {
+		return "/utenti/statisticheLogged";
+	}
+	
 }

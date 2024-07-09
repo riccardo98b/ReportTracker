@@ -17,10 +17,24 @@ public class indexController {
 	@Autowired
 	private UtenteService userService;
 	
+	// Home per i guest
 	@GetMapping("/")
 	public String home() {
 		return "guest/index";
 	}
+	
+	// Home per l'admin (loggato)
+	@GetMapping("/indexAD")
+	public String homeAD() {
+		return "admin/indexAD";
+	}
+	
+	// Home per l'utente (loggato)
+	@GetMapping("/indexLogged")
+	public String homeUtente() {
+		return "utenti/indexLogged";
+	}
+	
 	
 	
 	@GetMapping("/errore404")
