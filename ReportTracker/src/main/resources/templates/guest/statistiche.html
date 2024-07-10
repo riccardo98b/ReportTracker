@@ -43,9 +43,42 @@
         </div>
       </nav> 
     </header>
-    <div class="container">
-        <canvas id="myCanvas"></canvas>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div class="container" style="max-width: 800px; height: auto;">
+        <canvas id="myCanvas" width="80" height="80"></canvas>
     </div>
+    
+	<br>
+    <br>
+    <br>
+    <br>
+    <br>    
+    
+    <div class="container" style="max-width: 800px; height: auto; border: 500px">
+        <canvas id="myCanvas2" width="80" height="80"></canvas>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div class="container" style="max-width: 800px; height: auto; border: 500px">
+        <canvas id="myCanvas3" width="80" height="80"></canvas>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     
     <!-- Footer -->
     <footer class="footer">
@@ -85,6 +118,111 @@
                         }
                     }
                     
+                }
+            }
+        });
+        
+        
+        let myCanvas2 = document.getElementById("myCanvas2").getContext("2d");
+        let myLabels2 = ["Borseggio", "Tentato furto", "Vandalismo", "Percosse", "Disturbo della quiete pubblica", "Abbandono di rifiuti in luogo pubblico",
+         "Furto", "Molestie", "Truffa", "Tentata truffa","Furto a strappo","Accesso abusivo di proprietà","Abbandono di animali domestici","Atti osceni in luogo pubblico",
+         "Infrazione del codice della strada","Parcheggiatore abusivo","Vendita abusiva"];
+        let myData2 = [1170,776,756,369,801,363,1209,344,414,392,354,376,139,228,551,204,388];
+
+        // Calcola il totale dei dati
+        let totalData2 = myData2.reduce((acc, curr) => acc + curr, 0);
+
+        let chart2 = new Chart(myCanvas2, {
+            type: 'pie',
+            data: {
+                labels: myLabels2,
+                datasets: [{
+                    label: "Microcriminalità",
+                    data: myData2,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',  // Rosso
+                        'rgba(54, 162, 235, 0.6)',  // Blu
+                        'rgba(255, 206, 86, 0.6)',  // Giallo
+                        'rgba(75, 192, 192, 0.6)',  // Verde acqua
+                        'rgba(153, 102, 255, 0.6)', // Viola
+                        'rgba(255, 159, 64, 0.6)',  // Arancione
+                        'rgba(201, 203, 207, 0.6)', // Grigio
+                        'rgba(255, 99, 71, 0.6)',   // Rosso tomato
+                        'rgba(60, 179, 113, 0.6)',  // Verde medio
+                        'rgba(138, 43, 226, 0.6)',  // BlueViolet
+                        'rgba(255, 20, 147, 0.6)',  // DeepPink
+                        'rgba(70, 130, 180, 0.6)',  // SteelBlue
+                        'rgba(240, 230, 140, 0.6)', // Khaki
+                        'rgba(173, 255, 47, 0.6)',  // Verde giallo
+                        'rgba(30, 144, 255, 0.6)',  // DodgerBlue
+                        'rgba(250, 128, 114, 0.6)', // Salmon
+                        'rgba(186, 85, 211, 0.6)'   // MediumOrchid
+                        ],
+                    borderColor: 'rgba(255, 255, 255, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                let label = myLabels2[tooltipItem.dataIndex];
+                                let value = myData2[tooltipItem.dataIndex];
+                                let percentage = ((value / totalData2) * 100).toFixed(2) + '%';
+                                return label + ': ' + value + ' (' + percentage + ')';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        
+        let myCanvas3 = document.getElementById("myCanvas3").getContext("2d");
+        let myLabels3 = ["Mattina (06:00/12:00)", "Pomeriggio (12:00/18:00)", "Sera (18:00/00:00)", "Notte (00:00/06:00)"];
+        let myData3 = [1667,2665,3192,1310];
+
+        // Calcola il totale dei dati
+        let totalData3 = myData3.reduce((acc, curr) => acc + curr, 0);
+
+        let chart3 = new Chart(myCanvas3, {
+            type: 'doughnut',
+            data: {
+                labels: myLabels3,
+                datasets: [{
+                    label: "Microcriminalità",
+                    data: myData3,
+                    backgroundColor: [
+                        'rgba(255, 49, 49, 0.6)',
+                        'rgba(0, 191, 99, 0.6)',
+                        'rgba(255, 222, 89, 0.6)',
+                        'rgba(203, 108, 230, 0.6)'
+                    ],
+                    borderColor: 'rgba(255, 255, 255, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                let label = myLabels3[tooltipItem.dataIndex];
+                                let value = myData3[tooltipItem.dataIndex];
+                                let percentage = ((value / totalData3) * 100).toFixed(2) + '%';
+                                return label + ': ' + value + ' (' + percentage + ')';
+                            }
+                        }
+                    }
                 }
             }
         });
