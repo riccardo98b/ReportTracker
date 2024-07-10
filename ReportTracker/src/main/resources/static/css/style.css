@@ -111,7 +111,7 @@ main {
 }
 
 .spacer {
-    height: 50px; /* Imposta l'altezza dello spazio tra il testo e il pulsante */
+    height: 30px; /* Imposta l'altezza dello spazio tra il testo e il pulsante */
 }
 
 .carousel-overlay .btn {

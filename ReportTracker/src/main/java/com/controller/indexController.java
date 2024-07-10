@@ -68,5 +68,17 @@ public class indexController {
     public String homePage() {
         return "guest/index";
     }
+    
+    //pagina di informazioni
+    @GetMapping("/info")
+	public String infoPage() {
+		return "guest/info";
+	}
+    
+    //pagina di informazioni loggato
+    @GetMapping("/infoLogged")
+	public String infoPageLogged() {
+		return "utenti/infoLogged";
+	}
 }
 

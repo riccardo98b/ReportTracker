@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../img/icona_circolare.ico" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi siamo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <style>
+    .ms_header_text {
+    background-color: #02A9F7; /* Stesso colore di sfondo della navbar */
+    color: #ffffff; /* Colore del testo */
+    padding-top: 30px; /* Spazio interno */
+    padding-bottom: 160px;
+}
+
+.img-fluid{
+    border-radius: 20px;
+    max-height: 300px;
+    width: auto;
+}
+
+.middle-image {
+    width: 300px; /* Adatta l'immagine alla larghezza del contenitore */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+    margin-top: -220px; /* Spazio sopra e sotto l'immagine */
+}
+
+.custom-container {
+    padding: 20px; /* Spazio interno del container */
+    border-radius: 20px; /* Angoli arrotondati */
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra del container */
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #004AAD;
+    border-radius: 20px;
+    margin: 0 auto; /* Centra il contenitore orizzontalmente */
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+.team-member img {
+    width: auto;
+    height: 200px;
+    object-fit: cover;
+    margin: 0;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}
+
+.team-member h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.team-member p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+.leader {
+    grid-column: 2 / span 1; /* Posiziona la card del leader al centro */
+    grid-row: 1 / span 2; /* Estende la card del leader su due righe */
+    align-self: center; /* Centra verticalmente il blocco del leader */
+}
+
+.leader img {
+    width: auto; /* Immagine più grande per il leader */
+    height: 200px;
+    border-radius: 20px;
+}
+
+.leader h3 {
+    font-size: 1.5em; /* Nome più grande per il leader */
+}
+    </style>
+</head>
+<body>
+    <header class="">
+      <nav class="navbar navbar-expand-lg ms_nav_bar">
+        <div class="container-fluid">
+          <a class="navbar-brand ms_color_white ms_z-index " href="http://localhost:8080/indexLogged"><img class="logo_img" src="../img/report_Tracker.png" alt="Logo report tracker"></a>
+          <a class="navbar-brand ms_color_white ms_position-a" href="http://localhost:8080/indexLogged"><img class="logo_img" src="../img/report_Tracker-2.png" alt="Logo report tracker"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mx-4" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item pe-2 ms_wall">
+                <a class="nav-link ms_link active ms_color_white" aria-current="page" href="http://localhost:8080/indexLogged"><strong>Home</strong></a>
+              </li>
+              <li class="nav-item pe-2 ms_wall">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="http://localhost:8080/statisticheLogged"><Strong>Statistiche</Strong></a>
+              </li>
+              <li class="nav-item ms_wall">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="http://localhost:8080/segnalazioni/logged"><Strong>Segnalazioni</Strong></a>
+              </li>
+               <li class="nav-item col-4">
+                  <a class="ms_link nav-link active ms_color_white" aria-current="page" href="http://localhost:8080/infoLogged"><Strong>Chi Siamo</Strong></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav w-100 justify-content-end">
+              <li class="nav-item me-2">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="http://localhost:8080/segnalazioni/my"><Strong>Le mie Segnalazioni</Strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="ms_link nav-link active ms_color_white" aria-current="page" href="/logout"><strong>Logout</strong></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+       <div class="mb-5">
+            <div class="col-12 text-center ms_header_text">
+                <h1><strong>Chi siamo</strong></h1>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+                <img src="../img/icona_circolare.ico" alt="logo report tracker" class="middle-image">
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+       <h5 class="text-center"><strong>Report Tracker è il tuo strumento di fiducia per segnalare e monitorare i micro crimini nella città metropolitana di Milano e nei suoi comuni.</strong></h5>
+
+        <div class="row align-items-center mt-5 mb-4 custom-container" style="background-color: #FF3131">
+            <div class="col-md-6" style="color: white; background-color: rgba(0, 0, 0, 0.4); border: 5px solid white; border-radius: 20px; padding: 15px;">
+                <h2><strong>La nostra missione</strong></h2>
+                <p>Il nostro obiettivo è quello di creare una piattaforma sicura e intuitiva che permetta agli utenti di segnalare rapidamente e con precisione i micro crimini che avvengono nelle loro zone. Crediamo che la collaborazione tra cittadini e l'uso intelligente della tecnologia possa contribuire a rendere le nostre comunità più sicure.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../img/grafico_rt.png" alt="esempio di grafico report tracker" class="img-fluid">
+            </div>
+        </div>
+        <div class="row align-items-center mb-4 custom-container" style="background-color: #00BF63">
+            <div class="col-md-6 order-md-2" style="color: white; background-color: rgba(0, 0, 0, 0.4); border: 5px solid white; border-radius: 20px; padding: 15px;">
+                <h2><strong>Cosa facciamo</strong></h2>
+                <p>ReportTracker offre un servizio web innovativo progettato per raccogliere segnalazioni dagli utenti riguardanti micro crimini. La nostra piattaforma permette di:</p>
+                <ul>
+                 <li><strong>Segnalare Incidente:</strong> Gli utenti possono facilmente inviare segnalazioni dettagliate su vari tipi di micro crimini, contribuendo a creare un archivio accurato e aggiornato.</li>
+                 <li><strong>Visualizzare i Dati:</strong> Con una interfaccia intuitiva, gli utenti possono consultare le segnalazioni e visualizzare le aree più colpite. È possibile filtrare i dati per città metropolitana e provincia per ottenere informazioni precise e rilevanti.</li>
+                 <li><strong>Storico delle Segnalazioni:</strong> Offriamo l'accesso a uno storico delle segnalazioni, fornendo una descrizione accurata degli eventi accaduti, per mantenere gli utenti sempre informati sulla sicurezza nelle loro zone.</li>
+                </ul>
+            </div>
+            <div class="col-md-6 order-md-1 text-center">
+                <img src="../img/example_image_2.jpg" alt="Esempio Immagine" class="img-fluid">
+            </div>
+        </div>
+        <div class="row align-items-center mb-4 custom-container" style="background-color: #FFDE59">
+            <div class="col-md-6" style="color: white; background-color: rgba(0, 0, 0, 0.4); border: 5px solid white; border-radius: 20px; padding: 15px;">
+                <h2><strong>Perchè Milano</strong></h2>
+                <p>Abbiamo scelto di concentrare i nostri sforzi su Milano e i suoi comuni perché crediamo nell'importanza di iniziare dalle comunità locali per fare una differenza tangibile. Milano, con la sua vasta area metropolitana, rappresenta un esempio perfetto di come le tecnologie moderne possano essere utilizzate per migliorare la sicurezza urbana.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../img/milano_wm.png" alt="skyline di milano report tracker" class="img-fluid">
+            </div>
+        </div>
+        <div class="row align-items-center mb-5 custom-container" style="background-color: #CB6CE6">
+            <div class="col-md-6 order-md-2" style="color: white; background-color: rgba(0, 0, 0, 0.4); border: 5px solid white; border-radius: 20px; padding: 15px;">
+                <h2><strong>Il nostro impegno</strong></h2>
+                <p>Siamo impegnati a fornire un servizio affidabile e trasparente. La tua sicurezza è la nostra priorità. Vogliamo incoraggiare una maggiore partecipazione civica e fornire uno strumento utile per la comunità. Con ReportTracker, puoi fare la differenza nella tua città.</p>
+            </div>
+            <div class="col-md-6 order-md-1 text-center">
+                <img src="../img/handshake.jpg" alt="stretta di mano" class="img-fluid">
+            </div>
+        </div>
+<!-- fine info-->
+ <div class="spacer"></div> 
+ <!-- inizio team-->
+ <div class="container" style="background-color: #004AAD; border-radius: 20px;">
+    <h1 class="text-center mb-4" style="padding-top: 25px; color: #ffffff;"><strong>Il team</strong></h1>
+    <div class="team-container text-center">
+        <div class="team-member">
+            <img src="../img/pfp.png" alt="Samuele Lettieri">
+            <h3><strong>Samuele Lettieri</strong></h3>
+            <p>Back-end Developer</p>
+        </div>
+        <div class="team-member">
+            <img src="../img/pfp.png" alt="Pasquale La Gatta">
+            <h3><strong>Pasquale La Gatta</strong></h3>
+            <p>Front-end Developer</p>
+        </div>
+        <div class="team-member leader">
+            <img src="../img/pfp.png" alt="Riccardo Belloni">
+            <h3><strong>Riccardo Belloni</strong></h3>
+            <p>Project Owner</p>
+        </div>
+        <div class="team-member">
+            <img src="../img/pfp.png" alt="Christian Canicoba">
+            <h3><strong>Christian Canicoba</strong></h3>
+            <p>Front-end Developer</p>
+        </div>
+        <div class="team-member">
+            <img src="../img/pfp.png" alt="Nicolò Zorzi">
+            <h3><strong>Nicolò Zorzi</strong></h3>
+            <p>Back-end Developer</p>
+        </div>
+    </div>
+</div>
+    </main>
+    
+     <!-- Footer -->
+     <div class="spacer"></div> 
+    <footer class="footer">
+        <div class="containerf">
+            <p class="text-center">&copy; 2024 Report Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/myScript.js"></script>
+</body>
+</html>
