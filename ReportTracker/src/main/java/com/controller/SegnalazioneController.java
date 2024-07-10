@@ -38,5 +38,8 @@ public class SegnalazioneController {
 		return "/guest/segnalazioniDetail";
 	}
 	
-	
+	@GetMapping("/my")
+	public String my() {
+		return "/utenti/detail";
+	}
 }
