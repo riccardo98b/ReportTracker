@@ -34,5 +34,5 @@ public interface SegnalazioneService {
 	//RESTITUISCE LA LISTA DELLE SEGNALAZIONI DELLA TIPOLOGIA DI CRIMINE SPECIFICATA
 	List<Segnalazione> findByTipologiaCrimine(String tipologiacrimine)throws Exception;
 
-	
+	List<Segnalazione> findSegnalazioniByUtenteLoggato();
 }

@@ -13,24 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-	/*@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests()
-		.requestMatchers("/", "/accedi", "/registrazione", "/errore404", "/segnalazioni")
-		.permitAll()
-
-		.anyRequest().authenticated()
-		
-		.and().formLogin().loginPage("/accedi").defaultSuccessUrl("/segnalazioni", true) .permitAll().and().logout().logoutSuccessUrl("/").invalidateHttpSession(true)
-        .deleteCookies("JSESSIONID")
-        .permitAll(). and().exceptionHandling()
-		
-
-		.accessDeniedPage("/access-denied.html");
-	
-	    return http.build();
-	}*/
 	
 	/*@Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -50,7 +32,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/accedi")
-                .defaultSuccessUrl("/segnalazioni", true)
+                .defaultSuccessUrl("/indexLogged", true)
                 .permitAll()
             )
             .logout(logout -> logout
@@ -67,7 +49,7 @@ public class SecurityConfig {
     }*/
 	
     // Definisce la catena di filtri di sicurezza
-   @Bean
+   /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     	// Disabilita la protezione CSRF 
         http.csrf().disable()
@@ -79,7 +61,7 @@ public class SecurityConfig {
             .logout().disable(); // Disabilita il logout
 
         return http.build();// Costruisce e restituisce l'oggetto SecurityFilterChain
-    }
+    }*/
 	
     
     

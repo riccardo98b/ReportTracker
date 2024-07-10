@@ -15,21 +15,22 @@ document.addEventListener("DOMContentLoaded", function() {
         if (data.length === 0) {
             segnalazioniList.innerHTML = '<li>Nessun segnalazione trovata</li>';
         } else {
-            data.forEach(segnalazioni => {
+            for (let i = data.length - 1; i >= 0; i--) {
+                let segnalazioni = data[i];
                 segnalazioniList.innerHTML += `<div class="row mt-5">
-                <div class="col-12 row justify-content-center">
-                    <div class="col-6 row justify-content-center" >
-                        <div class="col-12 ms_box">
-                            <div class="col-12 p-3">
-                                <h3 class="col-4">${segnalazioni.comune.nome}</h3>
+                    <div class="col-12 row justify-content-center">
+                        <div class="col-6 row justify-content-center" >
+                            <div class="col-12 ms_box">
+                                <div class="col-12 p-3">
+                                    <h3 class="col-4">${segnalazioni.comune.nome}</h3>
+                                </div>
+                                <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
+                                <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
                             </div>
-                            <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
-                            <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
                         </div>
                     </div>
-                </div>
-            </div>` ;
-            });
+                </div>`;
+            }
         }
     })
     .catch(error => console.error('Error fetching comuni:', error));   
