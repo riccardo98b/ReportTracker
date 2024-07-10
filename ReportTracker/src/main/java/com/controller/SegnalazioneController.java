@@ -18,6 +18,11 @@ public class SegnalazioneController {
 		return "/segnalazioni/segnalazioniIndexDelete";
 	}
 	
+	@GetMapping("/logged")
+	public String segnalazioneLogged() {
+		return "/utenti/segnalazioniLogged";
+	}
+	
 	@GetMapping("/create")
 	public String create() {
 		return "/segnalazioni/create";
