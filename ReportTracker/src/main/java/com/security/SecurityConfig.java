@@ -43,7 +43,7 @@ public class SecurityConfig {
             )
             .exceptionHandling(exception -> exception
                 .accessDeniedPage("/errore404")
-            );
+            );   
 
         return http.build();
     }
