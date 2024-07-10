@@ -10,19 +10,46 @@
     <link rel="stylesheet" href="../css/segnalazioni.css"> 
     
     <style>
-      .ms_btn{
-        text-decoration: none;
-        color: white;
-        padding: 5px 15px;
-        background-color: #02A9F7;
-        border: solid #02A9F7 2px;
-        border-radius: 20px;
-      }
-      .ms_btn:hover{
-        color: #02A9F7;
-        background-color: white;
-        border: solid #02A9F7 2px;
-      }
+        
+        .ms_btn{
+            text-decoration: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .ms_btn_agg{
+        	background-color: #02A9F7;
+        	border: solid #02A9F7 2px;
+        }
+        .ms_btn_agg:hover{
+        	color: #02A9F7;
+        	background-color: white;
+        }
+
+        .ms_btn_mod{
+        	background-color: orange;
+        	border: solid orange 2px;
+        }
+        .ms_btn_mod:hover{
+        	color: orange;
+        	background-color: white;
+        }
+
+        .ms_btn_elim{
+	        background-color: red;
+	        border: solid red 2px;
+        }
+        .ms_btn_elim:hover{
+	        background-color: white;
+	        border: solid red 2px;
+        }
+        
+        
+        .ms_margin_b{
+            margin-bottom: 7rem !important;
+        }
+
     </style>
 </head>
 <body>
@@ -62,9 +89,9 @@
       </nav> 
     </header>
 
-    <main>
+    <main class="ms_margin_b">
     	<div class="container">
-        	<h5>Crea una nuova segnalazione <a class="d-inline-blok ms_btn ms-3" href="http://localhost:8080/segnalazioni/create">Aggiungi</a></h5>
+        	<h5>Crea una nuova segnalazione <a class="d-inline-blok ms_btn ms_btn_agg ms-3" href="http://localhost:8080/segnalazioni/create">Aggiungi</a></h5>
      	</div>     
         <div class="container" id="segnalazioniList">
               

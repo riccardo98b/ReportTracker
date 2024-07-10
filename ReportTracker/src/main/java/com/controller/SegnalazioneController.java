@@ -28,18 +28,18 @@ public class SegnalazioneController {
 		return "/segnalazioni/create";
 	}
 	
-	@GetMapping("/update")
-	public String update() {
+	@GetMapping("/updateAD/{id}")
+	public String updateAD() {
 		return "/segnalazioni/update";
-	}
-	
-	@GetMapping("/detail")
-	public String detail() {
-		return "/guest/segnalazioniDetail";
 	}
 	
 	@GetMapping("/my")
 	public String my() {
 		return "/utenti/detail";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String update() {
+		return "/utente/update";
 	}
 }

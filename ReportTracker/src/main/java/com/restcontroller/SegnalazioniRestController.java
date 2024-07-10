@@ -100,7 +100,7 @@ public class SegnalazioniRestController {
         }
     }
 	
-	@PutMapping("/update/segnalazione/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody Segnalazione segnalazione){
 		try {
 			return new ResponseEntity<>(service.updateById(id, segnalazione), HttpStatus.OK);
@@ -109,7 +109,7 @@ public class SegnalazioniRestController {
 		}
 	}
 	
-	@DeleteMapping("/delete/segnalazione/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable Long id){
 		try {
 			service.deleteById(id);

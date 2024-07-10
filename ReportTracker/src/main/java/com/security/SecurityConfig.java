@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all")
                 .permitAll()
                 
-                .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie","/segnalazioni/logged" ,"/segnalazioni/my")
+                .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie","/segnalazioni/logged" ,"/segnalazioni/my", "/segnalazioni/delete/**", "/segnalazioni/update/**")
                 .hasAuthority("USER")
                 
                 .requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
