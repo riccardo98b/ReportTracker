@@ -13,8 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
-	/*@Bean
+	// Permessi ruoli utente
+	@Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         
         http.csrf().disable()
@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all")
                 .permitAll()
                 
-                .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie")
+                .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie","/segnalazioni/logged")
                 .hasAuthority("USER")
                 
                 .requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
@@ -46,7 +46,7 @@ public class SecurityConfig {
             );
 
         return http.build();
-    }*/
+    }
 	
     // Definisce la catena di filtri di sicurezza
    /*@Bean
