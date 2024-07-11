@@ -80,5 +80,15 @@ public class indexController {
 	public String infoPageLogged() {
 		return "utenti/infoLogged";
 	}
+    
+  //PAGINA DI CHI SIAMO  ADMIN LOGGATO
+    @GetMapping("/infoAD")
+	public String infoPageAdmin() {
+		return "admin/infoAD";
+	}
+    
+    
+    
+    
 }
 

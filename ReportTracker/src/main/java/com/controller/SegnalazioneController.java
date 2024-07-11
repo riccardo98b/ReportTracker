@@ -23,6 +23,12 @@ public class SegnalazioneController {
 		return "/utenti/segnalazioniLogged";
 	}
 	
+	// PAGINA SEGNALAZIONI ADMIN
+	@GetMapping("/segnadmin")
+	public String segnalazioneAD() {
+		return "/admin/segnalazioniAD";
+	}
+	
 	@GetMapping("/create")
 	public String create() {
 		return "/segnalazioni/create";

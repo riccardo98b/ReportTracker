@@ -17,4 +17,10 @@ public class GraficiController {
 		return "/utenti/statisticheLogged";
 	}
 	
+	// STATISTICHE PAGINA ADMIN
+	@GetMapping("/statisticheAD")
+	public String graficiAD() {
+		return "/admin/statisticheAD";
+	}
+	
 }
