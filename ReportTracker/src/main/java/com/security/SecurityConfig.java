@@ -35,7 +35,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/accedi")
-                .defaultSuccessUrl("/indexLogged", true)
+                .successHandler(new CustomAuthenticationSuccessHandler())
                 .permitAll()
             )
             .logout(logout -> logout
