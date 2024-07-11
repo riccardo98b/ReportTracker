@@ -146,6 +146,11 @@ main {
     object-position: center; /* Centra l'immagine */
 }
 
+
+.ms_margin_b{
+    margin-bottom: 7rem !important;
+}
+
 /* Assicura che il footer sia sempre visibile */
 .footer {
 	

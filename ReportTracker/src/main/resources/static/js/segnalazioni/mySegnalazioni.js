@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
                                 <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
-                                <div class="col-12 p-3 fs-5 text-center"><a class="d-inline-blok ms_btn ms_btn_mod me-5" href="http://localhost:8080/update/{id}">Modifica</a> <a class="d-inline-blok ms_btn ms_btn_elim ms-3" href='' onclick="deleteSegnalazione(${segnalazioni.id})">Elimina</a></div>
+                                <div class="col-12 p-3 fs-5 text-center"><a class="d-inline-blok ms_btn ms_btn_mod me-5" href="http://localhost:8080/segnalazioni/update/${segnalazioni.id}">Modifica</a> <a class="d-inline-blok ms_btn ms_btn_elim ms-3" href='' onclick="deleteSegnalazione(${segnalazioni.id})">Elimina</a></div>
                             </div>
                         </div>
                     </div>

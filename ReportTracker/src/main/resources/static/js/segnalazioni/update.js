@@ -42,6 +42,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function creaSeg() {
+    // Ottieni il percorso dell'URL
+    const pathArray = window.location.pathname.split('/');
+    // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
+    const id = pathArray[pathArray.length - 1];
+
+    if (!id || isNaN(id)) {
+        const result = document.getElementById('result');
+        result.innerHTML = "<span class='ms_color_r'>ID del comune non trovato nell'URL</span>";
+        return;
+    }
+
     console.log("ciao");
     const descrizione = document.getElementById('descrizione').value;
     const data = document.getElementById('data').value;
@@ -124,7 +135,7 @@ function creaSeg() {
         console.error('Tutti i campi sono obbligatori');
     } else {
         
-        fetch('/segnalazioni/save', {
+        fetch(`/segnalazioni/update/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -147,6 +158,7 @@ function creaSeg() {
             // Aggiorna il risultato
             const result = document.getElementById('result');
             result.innerHTML = "<span class='ms_color_g'>Segnalazione creata con successo</span>";
+            window.location.href = 'http://localhost:8080/segnalazioni/logged';
         })
         .catch(error => {
             const result = document.getElementById('result');

@@ -46,6 +46,6 @@ public class SegnalazioneController {
 	
 	@GetMapping("/update/{id}")
 	public String update() {
-		return "/utente/update";
+		return "/utenti/update";
 	}
 }

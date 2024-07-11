@@ -103,6 +103,11 @@ public class SegnalazioniRestController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody Segnalazione segnalazione){
 		try {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        	String username = authentication.getName(); // Ottieni il nome utente
+        	Utente utente = utenteService.findByUsername(username);
+        	segnalazione.setUtente(utente);
+        	
 			return new ResponseEntity<>(service.updateById(id, segnalazione), HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

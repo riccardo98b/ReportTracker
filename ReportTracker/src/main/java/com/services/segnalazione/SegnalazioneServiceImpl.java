@@ -2,10 +2,8 @@ package com.services.segnalazione;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,17 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.model.Comune;
-import com.model.FasciaOraria;
+
 import com.model.Segnalazione;
 import com.model.TipologiaCrimine;
 import com.model.Utente;
-import com.repositories.FasciaOrariaRepository;
 import com.repositories.SegnalazioneRepository;
-import com.repositories.TipologiaCrimineRepository;
-import com.services.comune.ComuneServiceImpl;
-import com.services.fascia_oraria.FasciaOrariaServiceImpl;
-import com.services.tipologia_crimine.TipologiaCrimineServiceImpl;
 import com.services.utente.UtenteService;
 
 
@@ -74,12 +66,31 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 
 	@Override
 	public Segnalazione updateById(Long id, Segnalazione segnalazione) throws Exception {
+		Optional<Segnalazione> optS = repository.findById(id);
+		if(optS.isPresent()) {
+			Segnalazione existS = optS.get();
+			existS.setDescrizione(segnalazione.getDescrizione());
+			existS.setData(segnalazione.getData());
+			existS.setFoto_o_video(segnalazione.getFoto_o_video());
+			existS.setComune(segnalazione.getComune());
+			existS.setFasciaOraria(segnalazione.getFasciaOraria());
+			existS.setTipologiaCrimine(segnalazione.getTipologiaCrimine());
+			existS.setUtente(segnalazione.getUtente());
+			
+			return repository.save(existS);
+		}else {
+			throw new Exception("id not found"); 
+		}
+	}
+	
+/*	@Override
+	public Segnalazione updateById(Long id, Segnalazione segnalazione) throws Exception {
 		if(repository.existsById(id)) {
 			return repository.save(segnalazione);
 		}else {
 			throw new Exception("id not found"); 
 		}
-	}
+	}*/
 
 	
 	@Override

@@ -19,7 +19,10 @@ public class SecurityConfig {
         
         http.csrf().disable()
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all")
+                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all", "/info")
+                .permitAll()
+                
+                .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**")
                 .permitAll()
                 
                 .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie","/segnalazioni/logged" ,"/segnalazioni/my", "/segnalazioni/delete/**", "/segnalazioni/update/**")
@@ -47,6 +50,8 @@ public class SecurityConfig {
 
         return http.build();
     }
+	
+	
 	
     // Definisce la catena di filtri di sicurezza
    /*@Bean
