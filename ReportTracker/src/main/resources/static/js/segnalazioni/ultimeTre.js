@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('/segnalazioni/mie')
+    fetch('/segnalazioni/all')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
@@ -10,23 +10,23 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
     })  
     .then(data => {
-        console.log(data);
         const segnalazioniList = document.getElementById('segnalazioniList');
+        console.log(data);
         if (data.length === 0) {
             segnalazioniList.innerHTML = '<li>Nessun segnalazione trovata</li>';
         } else {
-            for (let i = 3; i >= 0; i--) {
+            let start = Math.max(data.length - 3, 0); // Calcola l'indice iniziale, assicurandosi di non andare sotto zero
+            for (let i = data.length - 1; i >= start; i--) {
                 let segnalazioni = data[i];
-                segnalazioniList.innerHTML += `<div class="row mt-5">
-                    <div class="col-12 row justify-content-center">
-                        <div class="col-6 row justify-content-center" >
-                            <div class="col-12 ms_box">
-                                <div class="col-12 p-3">
-                                    <h3 class="col-4">${segnalazioni.comune.nome}</h3>
-                                </div>
-                                <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
-                                <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
+                segnalazioniList.innerHTML += `<div class="col-4 mb-4">
+                    <div class="card">
+                        <img src="${segnalazioni.foto_o_video}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="row">
+                                <h4 class="card-title col-6">${segnalazioni.tipologiaCrimine[0].nome}</h4>
+                                <h5 class="card-title col-6 text-end">${segnalazioni.comune.nome}</h5>
                             </div>
+                            <p class="card-text">${segnalazioni.descrizione}</p>
                         </div>
                     </div>
                 </div>`;
