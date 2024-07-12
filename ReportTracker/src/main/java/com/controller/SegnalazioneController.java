@@ -36,7 +36,7 @@ public class SegnalazioneController {
 	
 	@GetMapping("/updateAD/{id}")
 	public String updateAD() {
-		return "/segnalazioni/update";
+		return "/admin/update";
 	}
 	
 	@GetMapping("/my")

@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .requestMatchers("/segnalazioni/save", "/segnalazioni/create", "/segnalazioni/mie","/segnalazioni/logged" ,"/segnalazioni/my", "/segnalazioni/delete/**", "/segnalazioni/update/**")
                 .hasAuthority("USER")
                 
-                .requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**")
+                .requestMatchers("/comuni/**", "/comuneAD/**", "/fascia_oraria", "/fasciaorariaAD/**", "/tipologie_criminiAD/**", "/tipologiecrimini/**", "/segnalazioni/**", "/segnalazioni/delete/**")
                 .hasAuthority("ADMIN")
 
                 .anyRequest().authenticated()
