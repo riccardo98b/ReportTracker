@@ -35,6 +35,11 @@
     color: #000304 !important;
 }
 
+.ms_drop_link:hover {
+    color: #ffffff !important;
+    background-color: #02A9F7 !important;
+}
+
 .ms_wall {
     border-right: 3px solid white;
 }
@@ -170,3 +175,4 @@ main {
     display: flex;
     justify-content: center;
 }
+

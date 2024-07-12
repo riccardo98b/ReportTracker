@@ -125,7 +125,7 @@ function creaSeg() {
     } else {
         
         fetch('/segnalazioni/save', {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },

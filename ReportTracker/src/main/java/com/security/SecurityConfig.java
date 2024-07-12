@@ -19,7 +19,7 @@ public class SecurityConfig {
         
         http.csrf().disable()
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all", "/info")
+                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all", "/info", "/errore404")
                 .permitAll()
                 
                 .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**")
@@ -71,23 +71,23 @@ public class SecurityConfig {
     
     
     
+	// Definisce il servizio per caricare i dettagli dell'utente dal database
 	@Bean
-    // Definisce il servizio per caricare i dettagli dell'utente dal database
 	DatabaseUserDetailsService userDetailsService() {
 		// Crea un'istanza di DatabaseUserDetailsService
 		return new DatabaseUserDetailsService();
 	}
 	
 
+	// Definisce il codificatore di password
 	@Bean
-    // Definisce il codificatore di password
     PasswordEncoder passwordEncoder() {
 		 // Restituisce un codificatore di password delegante
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
+	// Configura il provider di autenticazione
 	@Bean
-    // Configura il provider di autenticazione
     DaoAuthenticationProvider authenticationProvider() {
 		// Crea un'istanza di DaoAuthenticationProvider
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
