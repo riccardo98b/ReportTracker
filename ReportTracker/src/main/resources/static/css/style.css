@@ -158,21 +158,15 @@ main {
 
 /* Assicura che il footer sia sempre visibile */
 .footer {
-	
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     background-color: #02A9F7;
     color: white;
     padding: 5px 0; /* Mantieni un po' di padding per separare il testo dal bordo */
     height: 60px; /* Imposta un'altezza fissa più piccola */
     line-height: 50px; /* Imposta l'altezza della riga uguale all'altezza del footer */
     text-align: center; /* Centra il testo nel footer */
-    z-index: 1000; /* Assicura che il footer sia sopra gli altri elementi */
 }
 
 .footer .containerf {
-    display: flex;
     justify-content: center;
 }
 
