@@ -126,18 +126,20 @@ main {
 }
 
 .info-container{
-    background-color: #02A9F7; 
+    background-color: rgba(2, 169, 247, 0.8); 
     border-radius: 20px; 
     padding: 50px;
     color: white;
     text-align: justify;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 /* Stile per l'immagine centrata e con bordi arrotondati */
 .align-self-center {
-    border-radius: 15px; /* Arrotonda i bordi dell'immagine */
+    border-radius: 20px; /* Arrotonda i bordi dell'immagine */
     display: flex;
     align-items: center; /* Centra l'immagine verticalmente */
     justify-content: center; /* Centra l'immagine orizzontalmente */
+    border: 1px solid black;
 }
 
 .card{
