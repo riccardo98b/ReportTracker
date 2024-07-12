@@ -63,11 +63,6 @@ public class indexController {
     public String showLoginForm() {
         return "/login/login";
     }
-
-    @GetMapping("/home")
-    public String homePage() {
-        return "guest/index";
-    }
     
     //pagina di informazioni
     @GetMapping("/info")
