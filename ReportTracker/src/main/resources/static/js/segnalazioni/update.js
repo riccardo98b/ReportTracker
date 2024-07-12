@@ -61,6 +61,12 @@ function creaSeg() {
     const fascia_oraria = document.getElementById('fascia_oraria').value;
     const tipologia_crimine = document.getElementById('tipologia_crimine').value;
 
+	if (!data || descrizione.trim() === "" || !data || !comune || !fascia_oraria || !tipologia_crimine) {
+		        const result = document.getElementById('result');
+		        result.innerHTML = "<span class='ms_color_r'>Tutti i campi sono obbligatori</span>";
+		        console.error('Tutti i campi sono obbligatori');
+				return;
+		}
     // Converti la data nel formato ISO 8601 (yyyy-MM-dd)
    const dataISO = new Date(data).toISOString().split('T')[0];
     // Rimuovi eventuali caratteri extra dopo la conversione
@@ -129,10 +135,13 @@ function creaSeg() {
         const result = document.getElementById('result');
         result.innerHTML = "<span class='ms_color_r'>La data non può essere dopo la data odierna</span>";
         console.error('La data non può essere dopo la data odierna');
-    } else if (descrizione.trim() === "" || !data || !comune || !fascia_oraria || !tipologia_crimine) {
-        const result = document.getElementById('result');
-        result.innerHTML = "<span class='ms_color_r'>Tutti i campi sono obbligatori</span>";
-        console.error('Tutti i campi sono obbligatori');
+    } else if (descrizione.length > 250) {
+		const result = document.getElementById('result');
+		result.innerHTML = "<span class='ms_color_r'>La descrizione non può superare i 250 caratteri</span>";
+		console.error('La descrizione non può superare i 250 caratteri');
+	} else if (fotoUrl.length > 250 || videoUrl.length > 250) {
+	    result.innerHTML = "<span class='ms_color_r'>L'URL di foto o video non può superare i 250 caratteri</span>";
+	    console.error('L\'URL di foto o video non può superare i 250 caratteri');
     } else {
         
         fetch(`/segnalazioni/update/${id}`, {
