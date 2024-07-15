@@ -1,4 +1,6 @@
 console.log("ciao");
+
+// Gestione del form per la creazione della tipologia crimine
 document.getElementById('tipologiaForm').addEventListener('submit', function(event) {
     // Evita l'invio del form predefinito
     event.preventDefault();
@@ -37,3 +39,4 @@ document.getElementById('tipologiaForm').addEventListener('submit', function(eve
         document.getElementById('message').classList.add('alert', 'alert-danger');
     });
 });
+

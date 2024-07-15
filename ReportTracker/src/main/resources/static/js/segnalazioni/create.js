@@ -40,6 +40,84 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(tipologie_crimine);
 });
 
+// Gestione del form per la creazione della segnalazione
+document.addEventListener("DOMContentLoaded", function () {
+    const segnalazioneForm = document.getElementById('segnalazioneForm');
+
+    // Funzione per popolare le opzioni del campo "Comune"
+    function popolaComuni() {
+        const comuneSelect = document.getElementById('comune');
+        const comuni = ["Milano", "Roma", "Napoli", "Torino", "Palermo", "Genova"];
+        comuni.forEach(comune => {
+            const option = document.createElement('option');
+            option.value = comune;
+            option.text = comune;
+            comuneSelect.appendChild(option);
+        });
+    }
+
+    // Funzione per popolare le opzioni del campo "Fascia Oraria"
+    function popolaFasceOrarie() {
+        const fasciaOrariaSelect = document.getElementById('fascia_oraria');
+        const fasceOrarie = ["Mattina", "Pomeriggio", "Sera", "Notte"];
+        fasceOrarie.forEach(fascia => {
+            const option = document.createElement('option');
+            option.value = fascia;
+            option.text = fascia;
+            fasciaOrariaSelect.appendChild(option);
+        });
+    }
+
+    // Funzione per popolare le opzioni del campo "Tipologia Crimine"
+    function popolaTipologieCrimine() {
+        const tipologiaCrimineSelect = document.getElementById('tipologia_crimine');
+        const tipologieCrimine = ["Furto", "Aggressione", "Vandalismo", "Altro"];
+        tipologieCrimine.forEach(tipologia => {
+            const option = document.createElement('option');
+            option.value = tipologia;
+            option.text = tipologia;
+            tipologiaCrimineSelect.appendChild(option);
+        });
+    }
+
+    // Popolare le opzioni al caricamento della pagina
+    popolaComuni();
+    popolaFasceOrarie();
+    popolaTipologieCrimine();
+
+    // Funzione per creare la segnalazione
+    function creaSeg() {
+        const oggi = new Date();
+        const dataSegnalazione = new Date(document.getElementById('data').value);
+        const descrizione = document.getElementById('descrizione').value;
+        const foto_o_video = document.getElementById('foto_o_video').value;
+
+        const result = document.getElementById('result');
+        
+
+        if (dataSegnalazione > oggi) {
+            result.innerHTML = "<span class='ms_color_r'>La data non può essere dopo la data odierna</span>";
+            console.error('La data non può essere dopo la data odierna');
+        } else if (descrizione.length > 250) {
+            descrizioneAvviso.innerHTML = "";
+            descrizioneAvviso.innerHTML = "La descrizione non può superare i 250 caratteri";
+            console.error('La descrizione non può superare i 250 caratteri');
+        } else if (foto_o_video.length > 250) {
+            result.innerHTML = "<span class='ms_color_r'>L'URL di foto o video non può superare i 250 caratteri</span>";
+            console.error('L\'URL di foto o video non può superare i 250 caratteri');
+        } else {
+            result.innerHTML = "";
+            descrizioneAvviso.innerHTML = "";
+            // Il resto del codice per gestire il caso in cui tutti i controlli passano
+            alert('Form inviato con successo!');
+        }
+    }
+
+    segnalazioneForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        creaSeg();
+    });
+});
 
 function creaSeg() {
     console.log("ciao");
@@ -50,6 +128,8 @@ function creaSeg() {
     const fascia_oraria = document.getElementById('fascia_oraria').value;
     const tipologia_crimine = document.getElementById('tipologia_crimine').value;
 
+	const descrizioneAvviso = document.getElementById('descrizioneAvviso');
+	
 	if (!data || descrizione.trim() === "" || !data || !comune || !fascia_oraria || !tipologia_crimine) {
 	        const result = document.getElementById('result');
 	        result.innerHTML = "<span class='ms_color_r'>Tutti i campi sono obbligatori</span>";
@@ -125,8 +205,7 @@ function creaSeg() {
         result.innerHTML = "<span class='ms_color_r'>La data non può essere dopo la data odierna</span>";
         console.error('La data non può essere dopo la data odierna');
     } else if (descrizione.length > 250) {
-		const result = document.getElementById('result');
-		result.innerHTML = "<span class='ms_color_r'>La descrizione non può superare i 250 caratteri</span>";
+		descrizioneAvviso.innerHTML = "<span class='ms_color_r'>La descrizione non può superare i 250 caratteri</span>";
 	    console.error('La descrizione non può superare i 250 caratteri');
 	} else if (foto_o_video.length > 250) {
 	    result.innerHTML = "<span class='ms_color_r'>L'URL di foto o video non può superare i 250 caratteri</span>";
