@@ -172,3 +172,9 @@ main {
     justify-content: center;
 }
 
+.ms_pf{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

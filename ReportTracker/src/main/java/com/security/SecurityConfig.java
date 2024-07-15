@@ -19,7 +19,7 @@ public class SecurityConfig {
         
         http.csrf().disable()
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all", "/info", "/errore404")
+                .requestMatchers("/", "/segnalazioni", "/segnalazioni/all", "/statistiche", "/accedi", "/registrazione", "/comuneAD/all", "/fasciaorariaAD/all", "/tipologie_criminiAD/all", "/info", "/errore404", "/segnalazioni/find/**")
                 .permitAll()
                 
                 .requestMatchers("/css/**", "/img/**", "/js/**", "/webjars/**")

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +58,37 @@ public class SegnalazioniRestController {
 			return new ResponseEntity<>(segnalazione, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>("No author found", HttpStatus.OK);
+		}
+	}
+	
+	@GetMapping("/find/{id}")
+	public ResponseEntity<?> findById(@PathVariable Long id){
+		try {
+			return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
+		} catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteByIdAD(@PathVariable Long id){
+	try {
+			System.out.println("------------------------------------");
+			service.deleteById(id);
+			return new ResponseEntity<>("la segnalazione è stata eliminata", HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteById(@PathVariable Long id){
+	try {
+			System.out.println("------------------------------------");
+			service.deleteById(id);
+			return new ResponseEntity<>("la segnalazione è stata eliminata", HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -114,11 +146,13 @@ public class SegnalazioniRestController {
 		}
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteById(@PathVariable Long id){
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateByIdAD(@PathVariable Long id, @RequestBody Segnalazione segnalazione){
 		try {
-			service.deleteById(id);
-			return new ResponseEntity<>("la segnalazione è stata eliminata", HttpStatus.OK);
+        	Utente utente = utenteService.findByUsername(segnalazione.getUtente().getUsername());
+        	segnalazione.setUtente(utente);
+        	
+			return new ResponseEntity<>(service.updateById(id, segnalazione), HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
@@ -161,5 +195,11 @@ public class SegnalazioniRestController {
             return new ResponseEntity<>("No segnalazioni found for the logged-in user", HttpStatus.OK);
         }
     }
+	
+	/*@GetMapping("/save/csv")
+	public String saveCSV()throws Exception{
+		service.saveCSV();
+		return "File caricato con successo";
+	}*/
 	
 }

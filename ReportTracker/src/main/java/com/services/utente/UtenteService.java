@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.model.Comune;
 import com.model.Ruolo;
 import com.model.Utente;
 import com.repositories.RuoloRepository;
@@ -68,4 +69,13 @@ public class UtenteService {
         return repository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Utente non trovato con username: " + username));
     }
+    
+	
+	public Utente findById(Long id) throws Exception {
+		Optional<Utente> optUtente = repository.findById(id);
+		if(optUtente.isPresent()) {
+			return optUtente.get();
+		}
+		throw new Exception("Comune con id:"+id+" non esiste");
+	}
 }

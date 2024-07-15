@@ -123,7 +123,7 @@ a {
     </div>
         <div id="result"></div>
          <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer ms_pf">
         <div class="containerf">
             <p class="text-center">&copy; 2024 Report Tracker. All rights reserved.</p>
         </div>
@@ -152,10 +152,20 @@ a {
             return;
         }
 
+        fetch(`/tipologie_criminiAD/find/${id}`)
+        .then(response => response.json())
+        .then(dati => {
+            
+            const comune = document.getElementById('nome');
+
+            comune.value += `${dati.nome}`;
+        })
+        .catch(error => console.error('Error fetching segnalazione:', error)); 
+
         // Gestione del submit del form di aggiornamento
         document.getElementById('updateTipologiaForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const nome = document.getElementById('updateNome').value;
+            const nome = document.getElementById('nome').value;
 
             fetch(`/tipologie_criminiAD/update/${id}`, {
                 method: 'PUT',
@@ -177,7 +187,7 @@ a {
                 result.innerHTML = "<span class='ms_color_g'>La tipologia crimine è stata aggiornata con successo</span>";
 
                 // Pulisci il form
-                document.getElementById('updateNome').value = "";
+                document.getElementById('nome').value = "";
             })
             .catch(error => {
                 console.error('Error updating tipologia crimine:', error);

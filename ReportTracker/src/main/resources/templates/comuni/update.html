@@ -123,7 +123,7 @@
     </div>
         <div id="result"></div>
          <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer ms_pf">
         <div class="containerf">
             <p class="text-center">&copy; 2024 Report Tracker. All rights reserved.</p>
         </div>
@@ -141,6 +141,7 @@
     <script>
     console.log("pro");
     document.addEventListener("DOMContentLoaded", function() {
+        
         // Ottieni il percorso dell'URL
         const pathArray = window.location.pathname.split('/');
         // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
@@ -152,10 +153,21 @@
             return;
         }
 
+        fetch(`/comuneAD/find/${id}`)
+        .then(response => response.json())
+        .then(dati => {
+            
+            const comune = document.getElementById('nome');
+
+            comune.value += `${dati.nome}`;
+        })
+        .catch(error => console.error('Error fetching segnalazione:', error)); 
+        
+
         // Gestione del submit del form di aggiornamento
         document.getElementById('updateComuneForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const nome = document.getElementById('updateNome').value;
+            const nome = document.getElementById('nome').value;
 
             if(nome.trim() == " " || nome.trim() == ""){
                 const result = document.getElementById('result');
@@ -182,7 +194,7 @@
                     result.innerHTML = "<span class='ms_color_g'>Il comune è stato aggiornato con successo</span>";
         
                     // Pulisci il form
-                    document.getElementById('updateNome').value = "";
+                    document.getElementById('nome').value = "";
                 })
                 .catch(error => {
                     const result = document.getElementById('result');

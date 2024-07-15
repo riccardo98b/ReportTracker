@@ -1,6 +1,14 @@
 let comuni = [];
 let fascie_orarie = [];
 let tipologie_crimine = [];
+
+// Ottieni il percorso dell'URL
+const pathArray = window.location.pathname.split('/');
+// L'ID del comune dovrebbe essere l'ultimo elemento del percorso
+const id = pathArray[pathArray.length - 1];
+
+let utenti;
+
 document.addEventListener("DOMContentLoaded", function() {
     //COMUNI API
     fetch('/comuneAD/all')
@@ -37,15 +45,35 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     })
     .catch(error => console.error('Error fetching tipologie crimini:', error)); 
-    console.log(tipologie_crimine);
+    console.log(window.location.pathname);
+
+    fetch(`/segnalazioni/find/${id}`)
+    .then(response => response.json())
+    .then(dati => {
+        const descrizione = document.getElementById('descrizione');
+        const dataSegn = document.getElementById('data');
+        const foto_o_video = document.getElementById('foto_o_video');
+        const comune = document.getElementById('comune');
+        const fascia_oraria = document.getElementById('fascia_oraria');
+        const tipologia_crimine = document.getElementById('tipologia_crimine');
+
+        utenti = dati.utente;
+        console.log(utenti);
+
+        descrizione.innerHTML += `${dati.descrizione}`;
+        dataSegn.value += `${dati.data}`;
+        foto_o_video.innerHTML += `${dati.foto_o_video}`;
+        comune.innerHTML += `<option value="${dati.comune.id}">${dati.comune.nome}</option>`;
+        fascia_oraria.innerHTML += `<option value="${dati.fasciaOraria.id}">${dati.fasciaOraria.nome}</option>`;
+        tipologia_crimine.innerHTML += `<option value="${dati.tipologiaCrimine[0].id}">${dati.tipologiaCrimine[0].nome}</option>`;
+    })
+    .catch(error => console.error('Error fetching segnalazione:', error)); 
+
 });
 
 
+
 function creaSeg() {
-    // Ottieni il percorso dell'URL
-    const pathArray = window.location.pathname.split('/');
-    // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
-    const id = pathArray[pathArray.length - 1];
 
     if (!id || isNaN(id)) {
         const result = document.getElementById('result');
@@ -104,13 +132,23 @@ function creaSeg() {
         }
     })
 
-    console.log(idTC + " "+ nomeTC);
 
     let dati = {
         descrizione: descrizione,
         data: data,
         foto_o_video: foto_o_video,
         utente: {
+            id: utenti.id,
+            username: utenti.username,
+            email: utenti.email,
+            password: utenti.password,
+            nome: utenti.nome,
+            ruolo: [
+                {
+                    id: utenti.ruolo.id,
+                    nome: utenti.ruolo.nome
+                }
+            ]
         },
         comune: {
             id: idC,
@@ -139,12 +177,19 @@ function creaSeg() {
 		const result = document.getElementById('result');
 		result.innerHTML = "<span class='ms_color_r'>La descrizione non può superare i 250 caratteri</span>";
 		console.error('La descrizione non può superare i 250 caratteri');
-	} else if (fotoUrl.length > 250 || videoUrl.length > 250) {
+	} else if (fascia_oraria.length > 250) {
 	    result.innerHTML = "<span class='ms_color_r'>L'URL di foto o video non può superare i 250 caratteri</span>";
 	    console.error('L\'URL di foto o video non può superare i 250 caratteri');
     } else {
-        
-        fetch(`/segnalazioni/update/${id}`, {
+        const urlSito = window.location.pathname;
+        let adOrUser;
+        if(urlSito == `/segnalazioni/update/${id}`){
+            adOrUser =`/segnalazioni/update/${id}`
+        }else if(urlSito == `/segnalazioni/updateAD/${id}`){
+            adOrUser =`/segnalazioni/${id}`
+        }
+
+        fetch(adOrUser, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -167,7 +212,15 @@ function creaSeg() {
             // Aggiorna il risultato
             const result = document.getElementById('result');
             result.innerHTML = "<span class='ms_color_g'>Segnalazione creata con successo</span>";
-            window.location.href = 'http://localhost:8080/segnalazioni/logged';
+
+            // L'ID del comune dovrebbe essere l'ultimo elemento del percorso
+            const urlLog = pathArray[pathArray.length - 2];
+
+            if(urlLog == "updateAD"){
+                window.location.href = 'http://localhost:8080/segnalazioni/segnadmin';
+            }else{
+                window.location.href = 'http://localhost:8080/segnalazioni/logged';
+            }
         })
         .catch(error => {
             const result = document.getElementById('result');

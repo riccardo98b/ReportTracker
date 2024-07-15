@@ -35,4 +35,6 @@ public interface SegnalazioneService {
 	List<Segnalazione> findByTipologiaCrimine(String tipologiacrimine)throws Exception;
 
 	List<Segnalazione> findSegnalazioniByUtenteLoggato();
+	
+	//void saveCSV() throws Exception;
 }

@@ -2,8 +2,10 @@ package com.services.segnalazione;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,16 +13,21 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-
+import com.model.Comune;
+import com.model.FasciaOraria;
 import com.model.Segnalazione;
 import com.model.TipologiaCrimine;
 import com.model.Utente;
+import com.my_methods.MyMethods;
 import com.repositories.SegnalazioneRepository;
+import com.services.comune.ComuneService;
+import com.services.fascia_oraria.FasciaOrariaService;
+import com.services.tipologia_crimine.TipologiaCrimineService;
 import com.services.utente.UtenteService;
 
 
 @Service
-public class SegnalazioneServiceImpl implements SegnalazioneService{
+public class SegnalazioneServiceImpl extends MyMethods implements SegnalazioneService{
 
 	@Autowired
 	private SegnalazioneRepository repository;
@@ -28,6 +35,14 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 	@Autowired
 	private UtenteService utenteService;
 	
+	@Autowired
+	private ComuneService comuneService;
+	
+	@Autowired
+	private FasciaOrariaService foService;
+	
+	@Autowired
+	private TipologiaCrimineService tcService;
 	
 	@Override
 	public List<Segnalazione> findAll() {
@@ -156,6 +171,78 @@ public class SegnalazioneServiceImpl implements SegnalazioneService{
 	    Utente utente = utenteService.findByUsername(username);
 	    return repository.findByUtente(utente);
 	}
+	
+
+	/*@Override
+	public void saveCSV() throws Exception {
+	    // commento il percorso 
+	    // Samuele 
+	    String file = "C:\\Users\\Samuele\\OneDrive\\Documenti\\testJava/Dati Segnalazioni DB - Foglio1.csv";
+
+	    List<String> listFile = new ArrayList<>();
+	    try {
+	        listFile = lettura(file);
+
+	        for (String s : listFile) {
+	            String[] sup = s.split(",");
+	            
+
+	            Segnalazione segnalazione = new Segnalazione();
+	             
+	            segnalazione.setDescrizione(sup[0]);
+	            
+	            if (sup.length < 6) {
+	            	System.out.println("Riga non valida: " + sup[3]);
+	            	continue; // Salta la riga se non ha abbastanza colonne
+	            }
+	            
+	            String dataSplit[] = sup[1].split("/");
+	            
+	            String mese = dataSplit[1], giorno = dataSplit[0];
+	            
+	            if(dataSplit[1].length() < 2) {
+	            	mese = 0 + dataSplit[1];
+	            } else if(Integer.parseInt(mese) >= 13){
+	            	mese = "01";
+	            }
+	            	
+	            if(dataSplit[0].length() < 2) {
+	            	giorno = 0 + dataSplit[0];
+	            }
+	            
+	            LocalDate date = LocalDate.parse(dataSplit[2] + "-" + mese + "-" + giorno);
+	            segnalazione.setData(date);
+
+	            Comune c = comuneService.findById(Long.parseLong(sup[2]));
+	            segnalazione.setComune(c);
+	            
+	            FasciaOraria f = foService.getFasciaOrariaById(Long.parseLong(sup[3]));
+	            segnalazione.setFasciaOraria(f);
+	            
+	            String foto;
+	            if(sup[4].equals("") || sup[4] == null) {
+	            	foto = null;
+	            }else {
+	            	foto = sup[4];
+	            }
+	            segnalazione.setFoto_o_video(foto);
+	            
+	            Utente u = utenteService.findById(Long.parseLong(sup[5]));
+	            segnalazione.setUtente(u);
+	            
+	            Set<TipologiaCrimine> tc = new HashSet<>();
+	            TipologiaCrimine t = tcService.findByNomeTipologiaCrimine(sup[6]);
+	            tc.add(t);
+	            segnalazione.setTipologiaCrimine(tc);
+	            
+	            
+	            repository.save(segnalazione);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}*/
 }
 	
 	
