@@ -21,11 +21,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="col-12 row justify-content-center">
                         <div class="col-6 row justify-content-center" >
                             <div class="col-12 ms_box">
-                                <div class="col-12 p-3">
-                                    <h3 class="col-4">${segnalazioni.comune.nome}</h3>
-                                </div>
+                                <div class="row p-3">
+								    
+								        <h3 class="col-6">${segnalazioni.tipologiaCrimine[0].nome}</h3>
+								    
+								        <h4 class="col-6 text-end">${segnalazioni.comune.nome}</h4>
+								    
+								</div>
                                 <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
-                                <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
+                                <div class="row p-3">
+	                                <div class="col-6 text-start">
+								        ${segnalazioni.descrizione}
+								    </div>
+							    </div>
+                                <div class="row p-3">
+								    <div class="col-6 text-start fs-5">
+								        ${segnalazioni.data}
+								    </div>
+								    <div class="col-6 text-end fs-5">
+								        ${segnalazioni.fasciaOraria.nome}
+								    </div>
+								</div>
                             </div>
                         </div>
                     </div>
