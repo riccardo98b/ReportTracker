@@ -43,48 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // Gestione del form per la creazione della segnalazione
 document.addEventListener("DOMContentLoaded", function () {
     const segnalazioneForm = document.getElementById('segnalazioneForm');
-
-    // Funzione per popolare le opzioni del campo "Comune"
-    function popolaComuni() {
-        const comuneSelect = document.getElementById('comune');
-        const comuni = ["Milano", "Roma", "Napoli", "Torino", "Palermo", "Genova"];
-        comuni.forEach(comune => {
-            const option = document.createElement('option');
-            option.value = comune;
-            option.text = comune;
-            comuneSelect.appendChild(option);
-        });
-    }
-
-    // Funzione per popolare le opzioni del campo "Fascia Oraria"
-    function popolaFasceOrarie() {
-        const fasciaOrariaSelect = document.getElementById('fascia_oraria');
-        const fasceOrarie = ["Mattina", "Pomeriggio", "Sera", "Notte"];
-        fasceOrarie.forEach(fascia => {
-            const option = document.createElement('option');
-            option.value = fascia;
-            option.text = fascia;
-            fasciaOrariaSelect.appendChild(option);
-        });
-    }
-
-    // Funzione per popolare le opzioni del campo "Tipologia Crimine"
-    function popolaTipologieCrimine() {
-        const tipologiaCrimineSelect = document.getElementById('tipologia_crimine');
-        const tipologieCrimine = ["Furto", "Aggressione", "Vandalismo", "Altro"];
-        tipologieCrimine.forEach(tipologia => {
-            const option = document.createElement('option');
-            option.value = tipologia;
-            option.text = tipologia;
-            tipologiaCrimineSelect.appendChild(option);
-        });
-    }
-
-    // Popolare le opzioni al caricamento della pagina
-    popolaComuni();
-    popolaFasceOrarie();
-    popolaTipologieCrimine();
-
     // Funzione per creare la segnalazione
     function creaSeg() {
         const oggi = new Date();

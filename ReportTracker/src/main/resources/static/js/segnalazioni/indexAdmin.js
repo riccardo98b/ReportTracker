@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
                                 <div class="col-12 p-3 fs-5">${segnalazioni.descrizione}</div>
-                                <div class="row p-3">
+                                <div class="row">
                                     <div class="col-6 p-3 fs-6 "> ${segnalazioni.data}</div>
                                     <div class="col-6 p-3 fs-6 text-end"> ${segnalazioni.fasciaOraria.nome}</div>
                                     <div class="col-12 p-3 fs-5 text-center"><a class="d-inline-blok ms_btn ms_btn_mod me-5" href="http://localhost:8080/segnalazioni/updateAD/${segnalazioni.id}">Modifica</a> <a class="d-inline-blok ms_btn ms_btn_elim ms-3" href='' onclick="deleteSegnalazione(${segnalazioni.id})">Elimina</a></div>

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 								</div>
                                 <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
                                 <div class="row p-3">
-	                                <div class="col-6 text-start">
+	                                <div class="col-12 text-start fs-5">
 								        ${segnalazioni.descrizione}
 								    </div>
 							    </div>

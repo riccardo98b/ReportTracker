@@ -22,16 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="col-6 row justify-content-center" >
                             <div class="col-12 ms_box">
                                 <div class="row p-3">
-								    
-								        <h3 class="col-6">${segnalazioni.tipologiaCrimine[0].nome}</h3>
-								    
-								        <h4 class="col-6 text-end">${segnalazioni.comune.nome}</h4>
-								    
+								    <h3 class="col-6">${segnalazioni.tipologiaCrimine[0].nome}</h3>
+								    <h4 class="col-6 text-end">${segnalazioni.comune.nome}</h4>
 								</div>
                                 <div class="col-12 p-3"><img class="ms_immage ms_radius" src="${segnalazioni.foto_o_video}" alt=""></div>
                               	<div class="col-12 p-3 fs-5 text-center"><a class="d-inline-blok ms_btn ms_btn_mod me-5" href="http://localhost:8080/segnalazioni/update/${segnalazioni.id}">Modifica</a> <a class="d-inline-blok ms_btn ms_btn_elim ms-3" href='' onclick="deleteSegnalazione(${segnalazioni.id})">Elimina</a></div>
                             	<div class="row p-3">
-	                                <div class="col-6 text-start">
+	                                <div class="col-12 text-start fs-5">
 								        ${segnalazioni.descrizione}
 								    </div>
 							    </div>
