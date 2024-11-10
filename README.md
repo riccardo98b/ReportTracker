@@ -11,9 +11,8 @@ questo progetto permette  di gestire e monitorare i report in modo efficiente.
 
 ## Funzionalità
 - **Creazione e Gestione Report**: Permette di aggiungere, modificare ed eliminare report.
-- **Organizzazione**: Categorizzazione automatica dei report per una gestione più ordinata.
 - **Interfaccia Utente Web**: Facile accesso e navigazione tramite un’interfaccia web intuitiva, supportata da un backend in Java.
-- **Sicurezza dei Dati**: Implementazione di protocolli per la protezione delle informazioni degli utenti.
+- **Sicurezza dei Dati**: Implementazione di spring security per la protezione delle informazioni degli utenti.
   
 ## Struttura del Progetto
 Il progetto è suddiviso nelle seguenti componenti principali:
