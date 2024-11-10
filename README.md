@@ -1,5 +1,7 @@
 # ReportTracker
 
+<!-- Screen ReportTracker -->
+<img src="https://drive.google.com/file/d/1hI39xmxpy6Y8y3VmxrX9mrPOu1qoUOPJ/view">
 
 ## Descrizione
 **ReportTracker** è un sito progettato per la tracciabilità, organizzazione e gestione dei report di attività
