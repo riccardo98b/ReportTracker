@@ -47,6 +47,10 @@ Prima di iniziare, assicurati di avere:
 </ul>
 
 ## Esempi di Utilizzo
-<p>Aggiunta di un Report: Tramite l'interfaccia web, è possibile aggiungere un nuovo report selezionando le categorie e inserendo i dettagli necessari.
-Ricerca Avanzata: Utilizza i filtri per cercare report specifici per data, categoria o autore.
-Gestione Utenti: Gli amministratori possono aggiungere, rimuovere o modificare i permessi degli utenti.</p>
+<ul>
+ <li>Aggiunta di un Report: Tramite l'interfaccia web, è possibile aggiungere un nuovo report selezionando le categorie e inserendo 
+    i dettagli necessari. </li>
+ <li>Ricerca Avanzata: Utilizza i filtri per cercare report specifici per data, categoria o autore.</li>
+ <li>Gestione Utenti: Gli amministratori possono aggiungere, rimuovere o modificare i permessi degli utenti.
+</li>
+</ul>
