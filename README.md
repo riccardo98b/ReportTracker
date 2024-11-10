@@ -1,7 +1,7 @@
 # ReportTracker
 
 <!-- Screen ReportTracker -->
-<img src="https://ibb.co/PW2Y7T4">
+<img src="https://i.ibb.co/8xyBWz2/progetto-Report-Tracker-Belloni-Riccardo.png">
 
 ## Descrizione
 **ReportTracker** è un sito progettato per la tracciabilità, organizzazione e gestione dei report di attività
